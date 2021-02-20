@@ -34,6 +34,7 @@ const EstilosComponentes = makeStyles((theme) => ({
 function valuetext(value) {
   return `${value}°C`;
 }
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -65,7 +66,6 @@ const IMC = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  
 `
 function App() {
   const[Talla,setTalla]=useState(0);
@@ -250,6 +250,5 @@ function App() {
       <img alt='Salida' src={OutCorte}></img>
     </Wrapper>
   );
-} 
-
+}
 export default App;
