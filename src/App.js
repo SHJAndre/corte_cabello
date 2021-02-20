@@ -7,6 +7,7 @@ import styled from 'styled-components/macro'
 import { makeStyles } from '@material-ui/core/styles';
 import {marks,Tamanios, edades,LengthCabello} from './Arreglos'
 import Tamanio from './ModuloDifusos'
+import Cabello from './ModuloInferencial'
 
 const EstilosComponentes = makeStyles((theme) => ({
   root: {
@@ -77,9 +78,7 @@ function App() {
   const[Moda,setModa]=useState('Clasico');
   const[OutCorte, setOutCorte]=useState('');
   
-  
   const Estilos = EstilosComponentes();
-
 
   const TallaCambiada = (event) => {
     setTalla(Number(event.target.value));
@@ -104,7 +103,9 @@ function App() {
     setModa(event.target.alt);
   }
   const HandleCorte=()=>{
-    setOutCorte();
+    const Aux = Cabello(Tamanio(Edad,Temperatura,(Peso/Math.pow(Talla,2))),FormaCara,Personalidad,Moda);
+    setOutCorte(Aux);
+    console.log(OutCorte.toString());
   }
   return(
     <Wrapper>
@@ -247,7 +248,7 @@ function App() {
         </Grid>
       </EntradaInferencial>
       <button onClick={HandleCorte}>Calcular Corte</button>
-      <img alt='Salida' src={OutCorte}></img>
+      <img alt={OutCorte} src={OutCorte}></img>
     </Wrapper>
   );
 }
