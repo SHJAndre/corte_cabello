@@ -3,11 +3,10 @@ import NumberFormat from 'react-number-format';
 import logo from './logo.svg';
 import './App.css';
 import { Slider,TextField,InputAdornment,Typography,Grid} from '@material-ui/core';
-import Target from './Components/Target'
 import styled from 'styled-components/macro'
 import { makeStyles } from '@material-ui/core/styles';
 import {marks,Tamanios, edades,LengthCabello} from './Arreglos'
-
+import Tamanio from './ModuloDifusos'
 
 const EstilosComponentes = makeStyles((theme) => ({
   root: {
@@ -76,9 +75,12 @@ function App() {
   const[FormaCara, setFormaCara]=useState('Ovalada');
   const[Personalidad, setPersonalidad]=useState('Introvertido');
   const[Moda,setModa]=useState('Clasico');
-
-  const Estilos = EstilosComponentes();
+  const[OutCorte, setOutCorte]=useState('');
   
+  
+  const Estilos = EstilosComponentes();
+
+
   const TallaCambiada = (event) => {
     setTalla(Number(event.target.value));
   }
@@ -96,10 +98,13 @@ function App() {
     setFormaCara(event.target.alt);
   }
   const HandlePersonalidad =(event)=>{
-    setPersonalidad(event.target.alt)
+    setPersonalidad(event.target.alt);
   }
   const HandleModa=(event)=>{
-    setModa(event.target.alt)
+    setModa(event.target.alt);
+  }
+  const HandleCorte=()=>{
+    setOutCorte();
   }
   return(
     <Wrapper>
@@ -164,6 +169,7 @@ function App() {
               max={35}                                                
               marks={marks}                                                   
           />
+          <Typography>{Tamanio(Edad,Temperatura,(Peso/Math.pow(Talla,2)))}</Typography>
 
       </EntradaDifusa>
       <EntradaInferencial>
@@ -180,22 +186,22 @@ function App() {
         <Grid container spacing={2}>
             <Grid item spacing={0}>
               <figure >
-              <img onClick={HandleTipoRostro} alt='Ovalado' src='https://www.hogarmania.com/archivos/201404/formas-rostro-ovalado-XxXx80.jpg' style={{maxWidth:35+'vh', maxHeight:30+'vh'}}/>
+              <img onClick={HandleTipoRostro} alt='Ovalado' src='https://www.hogarmania.com/archivos/201404/formas-rostro-ovalado-XxXx80.jpg' style={{maxWidth:40+'vh', maxHeight:40+'vh'}}/>
               <figcaption>Olvalado</figcaption>
               </figure></Grid>
             <Grid item>
             <figure >
-              <img onClick={HandleTipoRostro} alt='Cuadrado' src='https://www.hogarmania.com/archivos/201404/formas-rostro-cuadrado-XxXx80.jpg' style={{maxWidth:35+'vh', maxHeight:30+'vh'}}/>
+              <img onClick={HandleTipoRostro} alt='Cuadrado' src='https://www.hogarmania.com/archivos/201404/formas-rostro-cuadrado-XxXx80.jpg' style={{maxWidth:40+'vh', maxHeight:40+'vh'}}/>
               <figcaption>Cuadrado</figcaption>
               </figure></Grid>
             <Grid item>
             <figure >
-              <img onClick={HandleTipoRostro} alt='Redondo' src='https://www.hogarmania.com/archivos/201404/formas-rostro-redondo-XxXx80.jpg' style={{maxWidth:35+'vh', maxHeight:30+'vh'}}/>
+              <img onClick={HandleTipoRostro} alt='Redondo' src='https://www.hogarmania.com/archivos/201404/formas-rostro-redondo-XxXx80.jpg' style={{maxWidth:40+'vh', maxHeight:40+'vh'}}/>
               <figcaption>Redondo</figcaption>
               </figure></Grid>
             <Grid item>
             <figure >
-              <img onClick={HandleTipoRostro} alt='Corazon' src='https://www.hogarmania.com/archivos/201404/formas-rostro-corazon-XxXx80.jpg' style={{maxWidth:35+'vh', maxHeight:30+'vh'}}/>
+              <img onClick={HandleTipoRostro} alt='Corazon' src='https://www.hogarmania.com/archivos/201404/formas-rostro-corazon-XxXx80.jpg' style={{maxWidth:40+'vh', maxHeight:40+'vh'}}/>
               <figcaption>Corazon</figcaption>
               </figure></Grid>
         </Grid>
@@ -220,7 +226,7 @@ function App() {
               <figcaption>Extrovertida</figcaption>
               </figure></Grid>
         </Grid>
-        <Typography variant='h3'>Seleccione la moda que va con usted:</Typography>
+        <Typography variant='h3'>Seleccione la moda que va con usted:{Moda}</Typography>
         <Grid container>
             <Grid item>
               <figure>
@@ -240,8 +246,10 @@ function App() {
             </Grid>
         </Grid>
       </EntradaInferencial>
+      <button onClick={HandleCorte}>Calcular Corte</button>
+      <img alt='Salida' src={OutCorte}></img>
     </Wrapper>
   );
-}
+} 
 
 export default App;
