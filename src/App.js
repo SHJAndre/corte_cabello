@@ -2,12 +2,16 @@ import React,{useState} from 'react'
 import NumberFormat from 'react-number-format';
 import logo from './logo.svg';
 import './App.css';
-import { Slider,TextField,InputAdornment,Typography,Grid} from '@material-ui/core';
+import {Modal,Slider,TextField,InputAdornment,Typography,Grid} from '@material-ui/core';
 import styled from 'styled-components/macro'
+import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles';
 import {marks,Tamanios, edades,LengthCabello} from './Arreglos'
 import Tamanio from './ModuloDifusos'
 import Cabello from './ModuloInferencial'
+import {ThemeProvider} from '@material-ui/core/styles'
+import theme from './temaConfig'
+import Navbar from './Navbar';
 
 const EstilosComponentes = makeStyles((theme) => ({
   root: {
@@ -17,8 +21,26 @@ const EstilosComponentes = makeStyles((theme) => ({
       display: 'flex',
       justifyContent: 'flex-start',
       maxWidth: 400,
-      borderRadius: 15
+      borderRadius: 50,
     },
+  },
+  modal:
+  {
+    paddingTop: "1vh",
+    paddingBottom: "2vh",
+    paddingRight : "2vh",
+    paddingLeft : "2vh",
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%,-50%)',
+    minWidth:500,
+    maxWidth: 500,
+    backgroundColor:"white",
+    borderRadius: 20,
+    minHeight: 680,
+    maxHeight: 680,
+    //borderStyle: "2px solid #F39C12"
   },
   DeslizadorEdad: {
     borderRadius: 5,
@@ -43,31 +65,32 @@ const Wrapper = styled.div`
   align-items: center;
   row-gap: 1vh;
 `
+
 const EntradaDifusa = styled.div`
-  padding-top:1vh;
+  padding-top:3vh;
   display: flex;
-  background-color: #e6e6ff;
+  background-color: #FFFFFF;
   min-height: 25vh;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  border-radius: 5%;
+  padding-bottom:5vh;
 `
 const EntradaInferencial = styled.div`
-  padding-top:1vh;
+  padding-top:3vh;
   display: flex;
-  background-color: #bbe6ff;
+  background-color: #FFFFFF;
   min-height: 25vh;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  border-radius: 5%;
 `
 const IMC = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
 `
+
 function App() {
   const[Talla,setTalla]=useState(0);
   const[Peso, setPeso]=useState(0);
@@ -77,9 +100,25 @@ function App() {
   const[Personalidad, setPersonalidad]=useState('Introvertido');
   const[Moda,setModa]=useState('Clasico');
   const[OutCorte, setOutCorte]=useState('');
-  
   const Estilos = EstilosComponentes();
-
+  const[modal, setModal] = useState(true);
+  const abrirCerrar =()=>
+  {
+    setModal(!modal);
+  }
+  const body=(
+    <div className={Estilos.modal}>
+      <div align="center">
+        <h2> Resultado </h2>
+      </div>
+      <div align="center">
+      <img alt={OutCorte} src={OutCorte} width="450" height="550"></img>
+      </div>
+      <div align="right">
+      <Button color="secondary" style={{marginTop:"8px"}} variant="contained" size= "large" onClick={()=>abrirCerrar()}>Salir</Button>
+      </div>
+    </div>
+  )
   const TallaCambiada = (event) => {
     setTalla(Number(event.target.value));
   }
@@ -105,12 +144,18 @@ function App() {
   const HandleCorte=()=>{
     const Aux = Cabello(Tamanio(Edad,Temperatura,(Peso/Math.pow(Talla,2))),FormaCara,Personalidad,Moda);
     setOutCorte(Aux);
-    console.log(OutCorte.toString());
+    abrirCerrar();
   }
   return(
+    <ThemeProvider theme={theme}>
+    <Navbar/>
+    <Modal open = {modal}
+          onClose={abrirCerrar}>
+          {body}
+        </Modal>
     <Wrapper>
       <EntradaDifusa className={Estilos.root}>
-        <Typography variant="h4" >Llene sus datos</Typography>
+        <Typography variant="h4" >Ingrese sus datos personales</Typography>
         <IMC>
         <TextField
           label="Talla"
@@ -174,14 +219,12 @@ function App() {
 
       </EntradaDifusa>
       <EntradaInferencial>
-
-        <Typography variant="h4" >ENTRADA DE DATOS INFERENCIALES</Typography>
+        <Typography variant="h4" >Escoja sus preferencias:</Typography>
         <TextField
-          
             required
             id="TipoRostro"
             label="Forma de Rostro"
-            variant="outlined"ssssss
+            variant="outlined"
             value = {FormaCara}
           />
         <Grid container spacing={2}>
@@ -247,9 +290,13 @@ function App() {
             </Grid>
         </Grid>
       </EntradaInferencial>
-      <button onClick={HandleCorte}>Calcular Corte</button>
-      <img alt={OutCorte} src={OutCorte}></img>
-    </Wrapper>
+      </Wrapper>
+      <div>
+        <Button onClick={HandleCorte} style={{maxHeight: '70px', minHeight: '70px'}} color="secondary" variant="contained" fullWidth>
+        Calcular Corte
+        </Button>
+      </div>  
+    </ThemeProvider>
   );
 }
 export default App;
