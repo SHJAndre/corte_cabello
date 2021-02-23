@@ -12,6 +12,7 @@ import Cabello from './ModuloInferencial'
 import {ThemeProvider} from '@material-ui/core/styles'
 import theme from './temaConfig'
 import Navbar from './Navbar';
+import Footer from './footer';
 
 const EstilosComponentes = makeStyles((theme) => ({
   root: {
@@ -50,7 +51,11 @@ const EstilosComponentes = makeStyles((theme) => ({
       background: 'linear-gradient(90deg, #99ebff 20%, #ffcc00 90%)',
       borderRadius: 5,
       maxWidth: 350,
-      
+  },
+  paper: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
   },
 }));
 
@@ -96,12 +101,12 @@ function App() {
   const[Peso, setPeso]=useState(0);
   const[Temperatura,setTemperatura]=useState(0);
   const[Edad, setEdad]=useState(0);
-  const[FormaCara, setFormaCara]=useState('Ovalada');
+  const[FormaCara, setFormaCara]=useState('Ovalado');
   const[Personalidad, setPersonalidad]=useState('Introvertido');
   const[Moda,setModa]=useState('Clasico');
   const[OutCorte, setOutCorte]=useState('');
   const Estilos = EstilosComponentes();
-  const[modal, setModal] = useState(true);
+  const[modal, setModal] = useState(false);
   const abrirCerrar =()=>
   {
     setModal(!modal);
@@ -115,7 +120,7 @@ function App() {
       <img alt={OutCorte} src={OutCorte} width="450" height="550"></img>
       </div>
       <div align="right">
-      <Button color="secondary" style={{marginTop:"8px"}} variant="contained" size= "large" onClick={()=>abrirCerrar()}>Salir</Button>
+      <Button color="secondary" style={{marginTop:"8px"}} variant="contained" size= "large" onClick={()=>abrirCerrar()}>  OK  </Button>
       </div>
     </div>
   )
@@ -218,74 +223,66 @@ function App() {
           <Typography>{Tamanio(Edad,Temperatura,(Peso/Math.pow(Talla,2)))}</Typography>
 
       </EntradaDifusa>
-      <EntradaInferencial>
-        <Typography variant="h4" >Escoja sus preferencias:</Typography>
-        <TextField
-            required
-            id="TipoRostro"
-            label="Forma de Rostro"
-            variant="outlined"
-            value = {FormaCara}
-          />
-        <Grid container spacing={2}>
-            <Grid item spacing={0}>
+      <EntradaInferencial className={Estilos.root}>
+      <Typography variant='h4'>Seleccione su tipo de rostro: {FormaCara}</Typography>
+        <Grid container spacing={2} alignItems="center"
+        justify="center" direction="row">
+            <Grid item xs={3}>
               <figure >
-              <img onClick={HandleTipoRostro} alt='Ovalado' src='https://www.hogarmania.com/archivos/201404/formas-rostro-ovalado-XxXx80.jpg' style={{maxWidth:40+'vh', maxHeight:40+'vh'}}/>
-              <figcaption>Olvalado</figcaption>
+              <img onClick={HandleTipoRostro} alt='Ovalado' src='https://www.hogarmania.com/archivos/201404/formas-rostro-ovalado-XxXx80.jpg' width="200" height="250"/>
+              <figcaption>Ovalado</figcaption>
               </figure></Grid>
-            <Grid item>
+            <Grid item xs={3}>
             <figure >
-              <img onClick={HandleTipoRostro} alt='Cuadrado' src='https://www.hogarmania.com/archivos/201404/formas-rostro-cuadrado-XxXx80.jpg' style={{maxWidth:40+'vh', maxHeight:40+'vh'}}/>
+              <img onClick={HandleTipoRostro} alt='Cuadrado' src='https://www.hogarmania.com/archivos/201404/formas-rostro-cuadrado-XxXx80.jpg' width="200" height="250"/>
               <figcaption>Cuadrado</figcaption>
               </figure></Grid>
-            <Grid item>
+            <Grid item xs={3}>
             <figure >
-              <img onClick={HandleTipoRostro} alt='Redondo' src='https://www.hogarmania.com/archivos/201404/formas-rostro-redondo-XxXx80.jpg' style={{maxWidth:40+'vh', maxHeight:40+'vh'}}/>
+              <img onClick={HandleTipoRostro} alt='Redondo' src='https://www.hogarmania.com/archivos/201404/formas-rostro-redondo-XxXx80.jpg' width="200" height="250"/>
               <figcaption>Redondo</figcaption>
               </figure></Grid>
-            <Grid item>
+            <Grid item xs={3}>
             <figure >
-              <img onClick={HandleTipoRostro} alt='Corazon' src='https://www.hogarmania.com/archivos/201404/formas-rostro-corazon-XxXx80.jpg' style={{maxWidth:40+'vh', maxHeight:40+'vh'}}/>
+              <img onClick={HandleTipoRostro} alt='Corazon' src='https://www.hogarmania.com/archivos/201404/formas-rostro-corazon-XxXx80.jpg' width="200" height="250"/>
               <figcaption>Corazon</figcaption>
               </figure></Grid>
         </Grid>
-
-        <TextField
-            required
-            id="Personalidad"
-            label="Personalidad"
-            variant="outlined"
-            value = {Personalidad}
-          />
-        <Grid container spacing={1}>
-            
-            <Grid item >
+        <Typography variant='h4'>Seleccione su personalidad: {Personalidad}</Typography>
+        <Grid container alignItems="center"
+        justify="center" spacing={0}
+        direction="row">
+            <Grid item xs={5}>
               <figure >
-              <img onClick={HandlePersonalidad} alt='Introvertida' src='https://www.psico.mx/site/article/58060/47901/shutterstock-1682028859_ai1.jpg' style={{maxWidth:70+'vh'}}/>
+              <img onClick={HandlePersonalidad} alt='Introvertida' align="center" src='https://www.psico.mx/site/article/58060/47901/shutterstock-1682028859_ai1.jpg'  width="450" height="300"/>
               <figcaption>Introvertida</figcaption>
               </figure></Grid>
-            <Grid item>
+            <Grid item xs={5}>
             <figure >
-              <img onClick={HandlePersonalidad} alt='Extrovertida' src='https://image.freepik.com/vector-gratis/extrovertido-concepto-extraversion-e-introversion-joven-mujer-feliz-centro-atencion-hablando_100478-392.jpg' style={{maxWidth:70+'vh'}}/>
+              <img onClick={HandlePersonalidad} alt='Extrovertida' src='https://image.freepik.com/vector-gratis/extrovertido-concepto-extraversion-e-introversion-joven-mujer-feliz-centro-atencion-hablando_100478-392.jpg' width="450" height="300"/>
               <figcaption>Extrovertida</figcaption>
               </figure></Grid>
         </Grid>
-        <Typography variant='h3'>Seleccione la moda que va con usted:{Moda}</Typography>
-        <Grid container>
-            <Grid item>
+        <Typography variant='h4'>Seleccione la moda que va con usted: {Moda}</Typography>
+        <Grid container alignItems="center"
+        justify="center" spacing={0}
+        direction="row">
+            <Grid item xs={4}>
               <figure>
-                <img onClick={HandleModa} alt='Clasico' src='https://cr.emedemujer.com/wp-content/uploads/sites/7/2015/11/Beautiful-girl-at-the-image-of-Audrey-Hepburn-000075729923_Medium.jpg' style={{maxWidth:58+'vh'}}/>
+                <img onClick={HandleModa} alt='Clasico' src='https://cr.emedemujer.com/wp-content/uploads/sites/7/2015/11/Beautiful-girl-at-the-image-of-Audrey-Hepburn-000075729923_Medium.jpg' width="350" height="250"/>
                 <figcaption>Clasico</figcaption>
               </figure>
             </Grid>
-            <Grid item>
+            <Grid item xs={4} style={{alignItems: "center"}}>
               <figure>
-                <img onClick={HandleModa} alt='Hipster' src='https://muy-trendy.com/wp-content/uploads/2019/08/look-urbano-mujer-Hipster.jpg' style={{maxWidth:58+'vh'}}></img>
+                <img onClick={HandleModa} alt='Hipster' src='https://muy-trendy.com/wp-content/uploads/2019/08/look-urbano-mujer-Hipster.jpg' width="350" height="250"></img>
+                <figcaption>Hipster</figcaption> 
               </figure>
             </Grid>
             <Grid item>
               <figure>
-                <img onClick={HandleModa} alt = 'Urbano' src='https://www.esdesignbarcelona.com/sites/default/files/estilos-de-moda-urbana-y-sus-caracteristicas-2.jpg' style={{maxWidth:58+'vh'}}></img>
+                <img onClick={HandleModa} alt = 'Urbano' src='https://www.esdesignbarcelona.com/sites/default/files/estilos-de-moda-urbana-y-sus-caracteristicas-2.jpg' width="350" height="250"></img>
+                <figcaption>Urbano</figcaption>
               </figure>
             </Grid>
         </Grid>

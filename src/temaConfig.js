@@ -11,35 +11,29 @@ const theme = createMuiTheme({
             main: '#283593',
           },
       },
-      
   typography: {
     fontFamily: [
-      'Roboto Slab',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-      'Raleway',
-    ].join(','),
+        'Pacifico', 'cursive',
+    ],
     h4: {
         fontWeight: 800,
       },
     h6: {
-        fontWeight: 900,  
+        fontWeight: 900,
+        fontFamily:'Monda',  
       },
-      body1: {
+    h2: {
+        fontWeight: 900,
+        fontFamily:'Monda'},
+    body1: {
         fontWeight: 500,
-      },
+     },
       button: {
         fontWeight: 900,
         fontSize: "large",
         fontStyle: "normal",
         fontColor: "white",
+        fontFamily:'Monda',  
       },
   },
 });
