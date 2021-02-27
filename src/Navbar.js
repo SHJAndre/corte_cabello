@@ -18,7 +18,7 @@ const Navbar = () => {
     <React.Fragment>
       <AppBar position="fixed" color="primary">
         <Toolbar>
-          <Typography variant="h6" > Recomendación de cortes de cabello</Typography>
+          <Typography variant="h6" > Recomendación de corte de cabello</Typography>
         </Toolbar>
       </AppBar>
       <div className={classes.offset}></div>
