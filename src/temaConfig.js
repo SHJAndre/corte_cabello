@@ -3,38 +3,44 @@ import { blue, pink } from "@material-ui/core/colors";
 import { deepOrange } from "@material-ui/core/colors";
 
 const theme = createMuiTheme({
-    palette: {
-        primary: {
-            main: '#ad1457',
-          },
-          secondary: {
-            main: '#283593',
-          },
-      },
+  palette: {
+    primary: {
+      main: "#ad1457",
+    },
+    secondary: {
+      main: "#003366",
+    },
+    primaryMen:{
+      main: "#003366",
+    },
+    secondaryMen: {
+      main: "#006666",
+    }
+    
+  },
   typography: {
-    fontFamily: [
-        'Pacifico', 'cursive',
-    ],
+    fontFamily: ["Pacifico", "cursive"],
     h4: {
-        fontWeight: 800,
-      },
+      fontWeight: 800,
+    },
     h6: {
-        fontWeight: 900,
-        fontFamily:'Monda',  
-      },
+      fontWeight: 900,
+      fontFamily: "Monda",
+    },
     h2: {
-        fontWeight: 900,
-        fontFamily:'Monda'},
+      fontWeight: 900,
+      fontFamily: "Monda",
+    },
     body1: {
-        fontWeight: 500,
-     },
-      button: {
-        fontWeight: 900,
-        fontSize: "large",
-        fontStyle: "normal",
-        fontColor: "white",
-        fontFamily:'Monda',  
-      },
+      fontWeight: 500,
+    },
+    button: {
+      fontWeight: 900,
+      fontSize: "large",
+      fontStyle: "normal",
+      fontColor: "white",
+      fontFamily: "Monda",
+    },
   },
 });
 
