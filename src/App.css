@@ -37,17 +37,17 @@
   }
 }
 img:hover{
-  filter: brightness(120%);
+  filter: brightness(110%);
   cursor:pointer;
 }
 
 img{
-  box-shadow: 10px 10px 5px #ccc;
+  box-shadow: 5px 5px 5px rgb(85, 76, 76);
 }
 
 img:active {
-  margin: 1px 1px 0;
-  box-shadow: -1px -1px 1px #ccc;
+  margin: 2px 0px 0;
+  box-shadow: -5px -5px 5px rgb(85, 76, 76);
 }
 
 figure {
