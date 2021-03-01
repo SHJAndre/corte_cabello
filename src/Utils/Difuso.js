@@ -1,5 +1,14 @@
-import Busqueda from "./InferenciaCorte"
-
+//import Busqueda from "./InferenciaCorte"
+const Varon = require('./Varon.json');
+const Mujer = require('./Mujer.json');
+function Busqueda(pcolorCabello,pcolorPiel,pformaRostro,pestilo,patrevimiento,ptipoCabello,pocupamiento)
+{
+  var PersonaEncontrada=_.find(Mujer,function(persona){
+    return ((persona.colorCabello==pcolorCabello)&&(persona.colorPiel==pcolorPiel)&& (persona.formaRostro==pformaRostro)&&(persona.estilo==pestilo)&&(persona.atrevimiento==patrevimiento)&&(persona.tipoCabello==ptipoCabello)&&(persona.ocupamiento==pocupamiento));
+    });
+  var Link=PersonaEncontrada.urlCorte;
+  return Link;
+}
 function triangular(x,param)
 {
   var a=parseFloat(param[0]);
@@ -324,11 +333,11 @@ function Ocupacion(Escala)
     //-------------------------------------------------------------------------------
     //Grado de membresía para universo de Nivel de Ocupacion
     var gLibre  = triangular(uNivelOcupacion, cLibre)
-    var gMucho = triangular(uNivelOcupacion, cCrespo)
+    var gMucho = triangular(uNivelOcupacion, cMucho)
 
     //Grado de membresía para Nivel de Ocupacion
     var gOLibre = triangular(Escala, cLibre)
-    var gOMucho = triangular(Escala, cCrespo)
+    var gOMucho = triangular(Escala, cMucho)
 
     //-------------------------------------------------------------------------------
     var Libre = gOLibre*100;
@@ -343,14 +352,14 @@ function Ocupacion(Escala)
     }
 }
 
-export default function CorteRecomendado(Opacidad,TonoPiel,FormaCara,Estilo,TipoPersonalidad,TipoCabello,NivelOcup)
+function CorteRecomendado(Opacidad,TonoPiel,FormaCara,Estilo,TipoPersonalidad,TipoCabello,NivelOcup)
 {
     // Pertenencia
     var ColorCab = ColorCabello(Opacidad);
     var ColorP = ColorPiel(TonoPiel); 
     var Person = Personalidad(TipoPersonalidad);
     var TipoCab = TipoCabe(TipoCabello);
-    var NivelOcup = NivelOcupacion(NivelOcup);
+    var NivelOcup = Ocupacion(NivelOcup);
     //-------------------------------------------
     var Resultado = Busqueda(ColorCab,ColorP,FormaCara,Estilo,Person,TipoCab,NivelOcup)
     return Resultado;
@@ -361,5 +370,5 @@ var CP=4;
 var P=4;
 var TipoCabello = 3;
 var Nivel = 8;
-console.log(CorteRecomendado(CC,CP,"gOvalado","gClasico",P,TipoCabello,Nivel));  
+CorteRecomendado(CC,CP,"gOvalado","gClasico",P,TipoCabello,Nivel);
 

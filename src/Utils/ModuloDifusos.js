@@ -371,5 +371,5 @@ export default function Tamanio(Edad,Temperatura,IMC)
 var Edad=45;
 var Temperatura=20;
 var IMC=19.8;
-Tamanio(Edad,Temperatura,IMC);  
+//Tamanio(Edad,Temperatura,IMC);  
 
