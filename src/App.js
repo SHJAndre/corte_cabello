@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import NumberFormat from "react-number-format";
-import {EstilosComponentes} from './Utils/EstilosMaterialUI'
+import { EstilosComponentes } from "./Utils/EstilosMaterialUI";
 import "./App.css";
 import {
   Modal,
@@ -33,13 +33,12 @@ import theme from "./Utils/temaConfig";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/footer";
 
-
-
 function valuetext(value) {
   return `${value}°C`;
 }
 
-function App() {
+const App = () => {
+  const [mujer, setMujer] = useState(true);
   const [OpacidadCabello, setOpacidadCabello] = useState(0);
   const [Piel, setPiel] = useState(0);
   const [FormaCara, setFormaCara] = useState("Ovalado");
@@ -96,15 +95,15 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Navbar />
+      <Navbar change={Sexo =>setMujer(Sexo)} />
       <Modal open={modal} onClose={abrirCerrar}>
         {body}
       </Modal>
       <Wrapper>
-        <EntradaDifusa className={Estilos.root}>
+        
           <Typography variant="h4">Ingrese sus datos personales</Typography>
           <Entrada>
-            <Typography>¿Cuál es la opacidad de su cabello?</Typography>
+            <Typography variant="h4">¿Cuál es la opacidad de su cabello?</Typography>
             <div style={{ background: OpacidadColores[OpacidadCabello] }}>
               Muestra
             </div>
@@ -120,7 +119,7 @@ function App() {
           />
 
           <Entrada>
-            <Typography>Elija su tono de piel</Typography>
+            <Typography variant="h4">Elija su tono de piel</Typography>
             <div style={{ background: ColorPiel[Piel] }}>Muestra</div>
           </Entrada>
           <Slider
@@ -240,8 +239,6 @@ function App() {
               </figure>
             </Grid>
           </Grid>
-        </EntradaDifusa>
-        <EntradaInferencial className={Estilos.root}>
           <Typography variant="h4">
             Seleccione su personalidad: {Personalidad}
           </Typography>
@@ -279,7 +276,6 @@ function App() {
             </Grid>
           </Grid>
 
-
           <Typography variant="h4">
             Del 1 al 10 ¿Qué tan ocupad@ estás?: {NivelOcupacion}
           </Typography>
@@ -316,7 +312,6 @@ function App() {
               </figure>
             </Grid>
           </Grid>
-        </EntradaInferencial>
       </Wrapper>
       <div>
         <Button
