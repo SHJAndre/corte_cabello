@@ -94,12 +94,12 @@ const App = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme} >
       <Navbar change={(Sexo) => setMujer(Sexo)} />
       <Modal open={modal} onClose={abrirCerrar}>
         {body}
       </Modal>
-      <Wrapper>
+      <Wrapper style={{backgroundImage:'url("https://previews.123rf.com/images/stepv/stepv1904/stepv190400006/122103258-womens-hair-salon-seamless-pattern-decorative-wallpaper-for-printing-design-background-vector-illust.jpg")'}}>
         <Typography variant="h4">Ingrese sus datos personales</Typography>
         <Entrada>
           <Typography variant="h4">
