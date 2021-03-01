@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import NumberFormat from "react-number-format";
-import {EstilosComponentes} from './Utils/EstilosMaterialUI'
+import { EstilosComponentes } from "./Utils/EstilosMaterialUI";
 import "./App.css";
 import {
   Modal,
@@ -32,8 +32,6 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./Utils/temaConfig";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/footer";
-
-
 
 function valuetext(value) {
   return `${value}°C`;
@@ -278,7 +276,6 @@ function App() {
               </figure>
             </Grid>
           </Grid>
-
 
           <Typography variant="h4">
             Del 1 al 10 ¿Qué tan ocupad@ estás?: {NivelOcupacion}
