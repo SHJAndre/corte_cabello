@@ -64,6 +64,7 @@ const Navbar = () => {
               <Grid item>
                 <AntSwitch
                   checked={checkedSexo}
+                  
                   onChange={handleSexo}
                   name="Sexo"
                 />
