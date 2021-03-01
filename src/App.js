@@ -111,7 +111,6 @@ const App = () => {
         <Slider
           className={Estilos.SlideHair}
           onChange={OpacidadCabelloCambiada}
-          getAriaValueText={valuetext}
           defaultValue={0}
           min={0}
           max={10}
@@ -125,7 +124,7 @@ const App = () => {
         <Slider
           className={Estilos.SlideSkin}
           onChange={ColorPielCambiada}
-          getAriaValueText={valuetext}
+
           defaultValue={0}
           min={0}
           max={10}
