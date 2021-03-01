@@ -99,9 +99,9 @@ const App = () => {
         {body}
       </Modal>
       <Wrapper style={{backgroundImage:'url("https://previews.123rf.com/images/stepv/stepv1904/stepv190400006/122103258-womens-hair-salon-seamless-pattern-decorative-wallpaper-for-printing-design-background-vector-illust.jpg")'}}>
-        <Typography variant="h4">Ingrese sus datos personales</Typography>
+        <Typography variant="h1">Ingrese sus datos personales</Typography>
         <Entrada>
-          <Typography variant="h4">
+          <Typography variant="h1">
             ¿Cuál es la opacidad de su cabello?
           </Typography>
           <div style={{ background: OpacidadColores[OpacidadCabello] }}>

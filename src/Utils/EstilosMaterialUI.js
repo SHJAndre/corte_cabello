@@ -34,13 +34,13 @@ export const EstilosComponentes = makeStyles((theme) => ({
     SlideHair: {
       background: "linear-gradient(90deg, #FFFF99 0%, #331A00 70%)",
       borderRadius: 5,
-      maxWidth: 350,
+      maxWidth: 80+'%',
       color: "#fff",
     },
     SlideSkin: {
       background: "linear-gradient(90deg, #faf7f5 0%, #754719 70%)",
       borderRadius: 5,
-      maxWidth: 350,
+      maxWidth: 80+'%',
       color: "#fff",
     },
     paper: {
