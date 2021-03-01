@@ -151,7 +151,7 @@ const App = () => {
                 <img
                   onClick={HandleTipoRostro}
                   alt="Ovalado"
-                  src="https://www.hogarmania.com/archivos/201404/formas-rostro-ovalado-XxXx80.jpg"
+                  src="https://i.ibb.co/qrMzxHx/formas-rostro-ovalado-Xx-Xx80.jpg"
                   style={{ maxWidth: 100 + "%" }}
                 />
                 <figcaption>Ovalado</figcaption>
@@ -162,7 +162,7 @@ const App = () => {
                 <img
                   onClick={HandleTipoRostro}
                   alt="Cuadrado"
-                  src="https://www.hogarmania.com/archivos/201404/formas-rostro-cuadrado-XxXx80.jpg"
+                  src="https://i.ibb.co/txQVNbd/formas-rostro-cuadrado-Xx-Xx80.jpg"
                   style={{ maxWidth: 100 + "%" }}
                 />
                 <figcaption>Cuadrado</figcaption>
@@ -181,7 +181,7 @@ const App = () => {
                 <img
                   onClick={HandleTipoRostro}
                   alt="Redondo"
-                  src="https://www.hogarmania.com/archivos/201404/formas-rostro-redondo-XxXx80.jpg"
+                  src="https://i.ibb.co/8bjWjz9/formas-rostro-redondo-Xx-Xx80.jpg"
                   style={{ maxWidth: 100 + "%" }}
                 />
                 <figcaption>Redondo</figcaption>
@@ -192,7 +192,7 @@ const App = () => {
                 <img
                   onClick={HandleTipoRostro}
                   alt="Corazon"
-                  src="https://www.hogarmania.com/archivos/201404/formas-rostro-corazon-XxXx80.jpg"
+                  src="https://i.ibb.co/JrrQWfq/formas-rostro-corazon-Xx-Xx80.jpg"
                   style={{ maxWidth: 100 + "%" }}
                 />
                 <figcaption>Corazon</figcaption>
@@ -216,7 +216,7 @@ const App = () => {
               <img
                 onClick={HandleModa}
                 alt="Clasico"
-                src="https://cr.emedemujer.com/wp-content/uploads/sites/7/2015/11/Beautiful-girl-at-the-image-of-Audrey-Hepburn-000075729923_Medium.jpg"
+                src="https://i.ibb.co/6sbT5Pv/Beautiful-girl-at-the-image-of-Audrey-Hepburn-000075729923-Medium.jpg"
                 width="350"
                 height="250"
               />
@@ -228,7 +228,7 @@ const App = () => {
               <img
                 onClick={HandleModa}
                 alt="Hipster"
-                src="https://muy-trendy.com/wp-content/uploads/2019/08/look-urbano-mujer-Hipster.jpg"
+                src="https://i.ibb.co/8PC3LQx/look-urbano-mujer-Hipster.jpg"
                 width="350"
                 height="250"
               ></img>
@@ -240,7 +240,7 @@ const App = () => {
               <img
                 onClick={HandleModa}
                 alt="Urbano"
-                src="https://www.esdesignbarcelona.com/sites/default/files/estilos-de-moda-urbana-y-sus-caracteristicas-2.jpg"
+                src="https://i.ibb.co/VLr65Pq/Fitness-sporty-girl-wearing-fashion-sportswear-over-street-wall-outdoor-sports-urban-style-Teen-mode.jpg"
                 width="350"
                 height="250"
               ></img>
@@ -264,7 +264,7 @@ const App = () => {
                 onClick={HandlePersonalidad}
                 alt="Introvertida"
                 align="center"
-                src="https://www.psico.mx/site/article/58060/47901/shutterstock-1682028859_ai1.jpg"
+                src="https://i.ibb.co/DVfSwT7/shutterstock-1682028859-ai1.jpg"
                 width="450"
                 height="300"
               />
@@ -276,7 +276,7 @@ const App = () => {
               <img
                 onClick={HandlePersonalidad}
                 alt="Extrovertida"
-                src="https://image.freepik.com/vector-gratis/extrovertido-concepto-extraversion-e-introversion-joven-mujer-feliz-centro-atencion-hablando_100478-392.jpg"
+                src="https://i.ibb.co/hR1dzLP/extrovertido-concepto-extraversion-e-introversion-joven-mujer-feliz-centro-atencion-hablando-100478.jpg"
                 width="450"
                 height="300"
               />
