@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import NumberFormat from "react-number-format";
-import logo from "./logo.svg";
+import {EstilosComponentes} from './Utils/EstilosMaterialUI'
 import "./App.css";
 import {
   Modal,
@@ -9,125 +9,42 @@ import {
   InputAdornment,
   Typography,
   Grid,
+  Button,
 } from "@material-ui/core";
-import styled from "styled-components/macro";
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
+
 import {
   OpacidadColores,
   ColorPiel,
   OpacidadRango,
-  Tamanios,
-  edades,
+  imgOcupacionMujer,
   LengthCabello,
 } from "./Utils/Arreglos";
+
+import {
+  Wrapper,
+  EntradaDifusa,
+  EntradaInferencial,
+  Entrada,
+} from "./Components/StyledComponents";
 import Tamanio from "./Utils/ModuloDifusos";
 import Cabello from "./Utils/ModuloInferencial";
 import { ThemeProvider } from "@material-ui/core/styles";
-import theme from "./temaConfig";
+import theme from "./Utils/temaConfig";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/footer";
 
-const EstilosComponentes = makeStyles((theme) => ({
-  root: {
-    "& .MuiTextField-root": {
-      margin: theme.spacing(3),
-      width: "25ch",
-      display: "flex",
-      justifyContent: "flex-start",
-      maxWidth: 400,
-      borderRadius: 50,
-    },
-  },
-  modal: {
-    paddingTop: "1vh",
-    paddingBottom: "2vh",
-    paddingRight: "2vh",
-    paddingLeft: "2vh",
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%,-50%)",
-    minWidth: 500,
-    maxWidth: 500,
-    backgroundColor: "white",
-    borderRadius: 20,
-    minHeight: 680,
-    maxHeight: 680,
-    //borderStyle: "2px solid #F39C12"
-  },
-  DeslizadorEdad: {
-    borderRadius: 5,
-    maxWidth: 350,
-  },
-  SlideHair: {
-    background: "linear-gradient(90deg, #FFFF99 0%, #331A00 70%)",
-    borderRadius: 5,
-    maxWidth: 350,
-    color: "#fff",
-  },
-  SlideSkin: {
-    background: "linear-gradient(90deg, #faf7f5 0%, #754719 70%)",
-    borderRadius: 5,
-    maxWidth: 350,
-    color: "#fff",
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  },
-}));
+
 
 function valuetext(value) {
   return `${value}°C`;
 }
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  row-gap: 1vh;
-`;
-
-const EntradaDifusa = styled.div`
-  padding-top: 3vh;
-  display: flex;
-  background-color: #ffffff;
-  min-height: 25vh;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding-bottom: 5vh;
-`;
-const EntradaInferencial = styled.div`
-  padding-top: 3vh;
-  display: flex;
-  background-color: #ffffff;
-  min-height: 25vh;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-`;
-const IMC = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-`;
-const Entrada = styled.div`
-  display: flex;
-`;
-
 function App() {
   const [OpacidadCabello, setOpacidadCabello] = useState(0);
   const [Piel, setPiel] = useState(0);
-  const [Talla, setTalla] = useState(0);
-  const [Peso, setPeso] = useState(0);
-
-  const [Edad, setEdad] = useState(0);
   const [FormaCara, setFormaCara] = useState("Ovalado");
   const [Personalidad, setPersonalidad] = useState("Introvertido");
+  const [NivelOcupacion, setNivelOcupacion] = useState();
   const [Moda, setModa] = useState("Clasico");
   const [OutCorte, setOutCorte] = useState("");
   const Estilos = EstilosComponentes();
@@ -163,16 +80,6 @@ function App() {
   const ColorPielCambiada = (event, newValue) => {
     setPiel(newValue);
   };
-  const TallaCambiada = (event) => {
-    setTalla(Number(event.target.value));
-  };
-  const PesoCambiado = (event) => {
-    setPeso(Number(event.target.value));
-  };
-
-  const EdadCambiada = (event, newValue) => {
-    setEdad(newValue);
-  };
 
   const HandleTipoRostro = (event) => {
     setFormaCara(event.target.alt);
@@ -180,19 +87,13 @@ function App() {
   const HandlePersonalidad = (event) => {
     setPersonalidad(event.target.alt);
   };
+  const HandleOcupacion = (event) => {
+    setNivelOcupacion(event.target.alt);
+  };
   const HandleModa = (event) => {
     setModa(event.target.alt);
   };
-  const HandleCorte = () => {
-    const Aux = Cabello(
-      Tamanio(Edad, OpacidadCabello, Peso / Math.pow(Talla, 2)),
-      FormaCara,
-      Personalidad,
-      Moda
-    );
-    setOutCorte(Aux);
-    abrirCerrar();
-  };
+
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
@@ -377,11 +278,49 @@ function App() {
               </figure>
             </Grid>
           </Grid>
+
+
+          <Typography variant="h4">
+            Del 1 al 10 ¿Qué tan ocupad@ estás?: {NivelOcupacion}
+          </Typography>
+          <Grid
+            container
+            alignItems="center"
+            justify="center"
+            spacing={0}
+            direction="row"
+          >
+            <Grid item xs={5}>
+              <figure>
+                <img
+                  onClick={HandleOcupacion}
+                  alt="Libre"
+                  align="center"
+                  src={imgOcupacionMujer[1]}
+                  width="450"
+                  height="300"
+                />
+                <figcaption>Libre</figcaption>
+              </figure>
+            </Grid>
+            <Grid item xs={5}>
+              <figure>
+                <img
+                  onClick={HandleOcupacion}
+                  alt="Ocupada"
+                  src={imgOcupacionMujer[0]}
+                  width="450"
+                  height="300"
+                />
+                <figcaption>Ocupada</figcaption>
+              </figure>
+            </Grid>
+          </Grid>
         </EntradaInferencial>
       </Wrapper>
       <div>
         <Button
-          onClick={HandleCorte}
+          onClick={{}}
           style={{ maxHeight: "70px", minHeight: "70px" }}
           color="secondary"
           variant="contained"

@@ -65,12 +65,15 @@ export const edades = [
 ];
 export const imgOcupacionMujer = [
   //Ocupada
-  {url: 'https://www.brunoticias.com/wp-content/uploads/2020/02/ocupado.png'}
+  'https://www.brunoticias.com/wp-content/uploads/2020/02/ocupado.png',
   //Libre
+  'https://media.giphy.com/media/2lqLNppF9KRuE/giphy.gif'
+
 ];
 export const imgOcupacionVaron = [
   //Ocupado
-  {url: 'https://gestion.pe/resizer/JY-WYEdvSFXxmF2dV0b8K_FM31M=/580x330/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/Z2Y6X2HCFBHEXPOHUCZMHZ6RJM.jpg'}
+  {url: 'https://gestion.pe/resizer/JY-WYEdvSFXxmF2dV0b8K_FM31M=/580x330/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/Z2Y6X2HCFBHEXPOHUCZMHZ6RJM.jpg'},
   //Libre
+  {url: 'https://lamenteesmaravillosa.com/wp-content/uploads/2013/08/hombre-relajandose.jpg'}
 ];
 
