@@ -33,11 +33,8 @@ import theme from "./Utils/temaConfig";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/footer";
 
-function valuetext(value) {
-  return `${value}°C`;
-}
-
 const App = () => {
+  const Estilos = EstilosComponentes();
   const [mujer, setMujer] = useState(true);
   const [OpacidadCabello, setOpacidadCabello] = useState(0);
   const [Piel, setPiel] = useState(0);
@@ -46,7 +43,6 @@ const App = () => {
   const [NivelOcupacion, setNivelOcupacion] = useState();
   const [Moda, setModa] = useState("Clasico");
   const [OutCorte, setOutCorte] = useState("");
-  const Estilos = EstilosComponentes();
   const [modal, setModal] = useState(false);
   const abrirCerrar = () => {
     setModal(!modal);
@@ -92,6 +88,9 @@ const App = () => {
   const HandleModa = (event) => {
     setModa(event.target.alt);
   };
+  const HandleCorte=()=>{
+    setOutCorte();
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -315,7 +314,7 @@ const App = () => {
       </Wrapper>
       <div>
         <Button
-          onClick={{}}
+          onClick={{HandleCorte}}
           style={{ maxHeight: "70px", minHeight: "70px" }}
           color="secondary"
           variant="contained"
