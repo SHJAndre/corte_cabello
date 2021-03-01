@@ -52,8 +52,8 @@ const Navbar = () => {
   };
   return (
     <React.Fragment>
-      <AppBar position="fixed" color={checkedSexo?"primary":"secondary"}>
-        <Toolbar>
+      <AppBar position="fixed" color={checkedSexo?"primary":"secondary"} >
+        <Toolbar style={{display: 'flex',justifyContent: "space-between"}}>
           <Typography variant="h6">
             {" "}
             Recomendación de corte de cabello
