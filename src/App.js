@@ -93,53 +93,60 @@ const App = () => {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <Navbar change={Sexo =>setMujer(Sexo)} />
+    <ThemeProvider theme={theme} >
+      <Navbar change={(Sexo) => setMujer(Sexo)} />
       <Modal open={modal} onClose={abrirCerrar}>
         {body}
       </Modal>
-      <Wrapper>
-        
-          <Typography variant="h4">Ingrese sus datos personales</Typography>
-          <Entrada>
-            <Typography variant="h4">¿Cuál es la opacidad de su cabello?</Typography>
-            <div style={{ background: OpacidadColores[OpacidadCabello] }}>
-              Muestra
-            </div>
-          </Entrada>
-          <Slider
-            className={Estilos.SlideHair}
-            onChange={OpacidadCabelloCambiada}
-            getAriaValueText={valuetext}
-            defaultValue={0}
-            min={0}
-            max={10}
-            marks={OpacidadRango}
-          />
-
-          <Entrada>
-            <Typography variant="h4">Elija su tono de piel</Typography>
-            <div style={{ background: ColorPiel[Piel] }}>Muestra</div>
-          </Entrada>
-          <Slider
-            className={Estilos.SlideSkin}
-            onChange={ColorPielCambiada}
-            getAriaValueText={valuetext}
-            defaultValue={0}
-            min={0}
-            max={10}
-            marks={OpacidadRango}
-          />
-
+      <Wrapper style={{backgroundImage:'url("https://previews.123rf.com/images/stepv/stepv1904/stepv190400006/122103258-womens-hair-salon-seamless-pattern-decorative-wallpaper-for-printing-design-background-vector-illust.jpg")'}}>
+        <Typography variant="h4">Ingrese sus datos personales</Typography>
+        <Entrada>
           <Typography variant="h4">
-            Seleccione su tipo de rostro: {FormaCara}
+            ¿Cuál es la opacidad de su cabello?
           </Typography>
+          <div style={{ background: OpacidadColores[OpacidadCabello] }}>
+            Muestra
+          </div>
+        </Entrada>
+        <Slider
+          className={Estilos.SlideHair}
+          onChange={OpacidadCabelloCambiada}
+          getAriaValueText={valuetext}
+          defaultValue={0}
+          min={0}
+          max={10}
+          marks={OpacidadRango}
+        />
+
+        <Entrada>
+          <Typography variant="h4">Elija su tono de piel</Typography>
+          <div style={{ background: ColorPiel[Piel] }}>Muestra</div>
+        </Entrada>
+        <Slider
+          className={Estilos.SlideSkin}
+          onChange={ColorPielCambiada}
+          getAriaValueText={valuetext}
+          defaultValue={0}
+          min={0}
+          max={10}
+          marks={OpacidadRango}
+        />
+
+        <Typography variant="h4">
+          Seleccione su tipo de rostro: {FormaCara}
+        </Typography>
+        <Grid
+          container
+          spacing={2}
+          alignItems="center"
+          justify="center"
+        >
           <Grid
+            item
             container
-            spacing={2}
+            direction="row"
             alignItems="center"
             justify="center"
-            direction="row"
           >
             <Grid item xs={3}>
               <figure>
@@ -147,8 +154,7 @@ const App = () => {
                   onClick={HandleTipoRostro}
                   alt="Ovalado"
                   src="https://www.hogarmania.com/archivos/201404/formas-rostro-ovalado-XxXx80.jpg"
-                  width="200"
-                  height="250"
+                  style={{ maxWidth: 100 + "%" }}
                 />
                 <figcaption>Ovalado</figcaption>
               </figure>
@@ -159,20 +165,26 @@ const App = () => {
                   onClick={HandleTipoRostro}
                   alt="Cuadrado"
                   src="https://www.hogarmania.com/archivos/201404/formas-rostro-cuadrado-XxXx80.jpg"
-                  width="200"
-                  height="250"
+                  style={{ maxWidth: 100 + "%" }}
                 />
                 <figcaption>Cuadrado</figcaption>
               </figure>
             </Grid>
+          </Grid>
+          <Grid
+            item
+            container
+            direction="row"
+            alignItems="center"
+            justify="center"
+          >
             <Grid item xs={3}>
               <figure>
                 <img
                   onClick={HandleTipoRostro}
                   alt="Redondo"
                   src="https://www.hogarmania.com/archivos/201404/formas-rostro-redondo-XxXx80.jpg"
-                  width="200"
-                  height="250"
+                  style={{ maxWidth: 100 + "%" }}
                 />
                 <figcaption>Redondo</figcaption>
               </figure>
@@ -183,134 +195,134 @@ const App = () => {
                   onClick={HandleTipoRostro}
                   alt="Corazon"
                   src="https://www.hogarmania.com/archivos/201404/formas-rostro-corazon-XxXx80.jpg"
-                  width="200"
-                  height="250"
+                  style={{ maxWidth: 100 + "%" }}
                 />
                 <figcaption>Corazon</figcaption>
               </figure>
             </Grid>
           </Grid>
+        </Grid>
 
-          <Typography variant="h4">
-            Seleccione la moda que va con usted: {Moda}
-          </Typography>
-          <Grid
-            container
-            alignItems="center"
-            justify="center"
-            spacing={0}
-            direction="row"
-          >
-            <Grid item xs={4}>
-              <figure>
-                <img
-                  onClick={HandleModa}
-                  alt="Clasico"
-                  src="https://cr.emedemujer.com/wp-content/uploads/sites/7/2015/11/Beautiful-girl-at-the-image-of-Audrey-Hepburn-000075729923_Medium.jpg"
-                  width="350"
-                  height="250"
-                />
-                <figcaption>Clasico</figcaption>
-              </figure>
-            </Grid>
-            <Grid item xs={4} style={{ alignItems: "center" }}>
-              <figure>
-                <img
-                  onClick={HandleModa}
-                  alt="Hipster"
-                  src="https://muy-trendy.com/wp-content/uploads/2019/08/look-urbano-mujer-Hipster.jpg"
-                  width="350"
-                  height="250"
-                ></img>
-                <figcaption>Hipster</figcaption>
-              </figure>
-            </Grid>
-            <Grid item>
-              <figure>
-                <img
-                  onClick={HandleModa}
-                  alt="Urbano"
-                  src="https://www.esdesignbarcelona.com/sites/default/files/estilos-de-moda-urbana-y-sus-caracteristicas-2.jpg"
-                  width="350"
-                  height="250"
-                ></img>
-                <figcaption>Urbano</figcaption>
-              </figure>
-            </Grid>
+        <Typography variant="h4">
+          Seleccione la moda que va con usted: {Moda}
+        </Typography>
+        <Grid
+          container
+          alignItems="center"
+          justify="center"
+          spacing={0}
+          direction="row"
+        >
+          <Grid item xs={4}>
+            <figure>
+              <img
+                onClick={HandleModa}
+                alt="Clasico"
+                src="https://cr.emedemujer.com/wp-content/uploads/sites/7/2015/11/Beautiful-girl-at-the-image-of-Audrey-Hepburn-000075729923_Medium.jpg"
+                width="350"
+                height="250"
+              />
+              <figcaption>Clasico</figcaption>
+            </figure>
           </Grid>
-          <Typography variant="h4">
-            Seleccione su personalidad: {Personalidad}
-          </Typography>
-          <Grid
-            container
-            alignItems="center"
-            justify="center"
-            spacing={0}
-            direction="row"
-          >
-            <Grid item xs={5}>
-              <figure>
-                <img
-                  onClick={HandlePersonalidad}
-                  alt="Introvertida"
-                  align="center"
-                  src="https://www.psico.mx/site/article/58060/47901/shutterstock-1682028859_ai1.jpg"
-                  width="450"
-                  height="300"
-                />
-                <figcaption>Introvertida</figcaption>
-              </figure>
-            </Grid>
-            <Grid item xs={5}>
-              <figure>
-                <img
-                  onClick={HandlePersonalidad}
-                  alt="Extrovertida"
-                  src="https://image.freepik.com/vector-gratis/extrovertido-concepto-extraversion-e-introversion-joven-mujer-feliz-centro-atencion-hablando_100478-392.jpg"
-                  width="450"
-                  height="300"
-                />
-                <figcaption>Extrovertida</figcaption>
-              </figure>
-            </Grid>
+          <Grid item xs={4} style={{ alignItems: "center" }}>
+            <figure>
+              <img
+                onClick={HandleModa}
+                alt="Hipster"
+                src="https://muy-trendy.com/wp-content/uploads/2019/08/look-urbano-mujer-Hipster.jpg"
+                width="350"
+                height="250"
+              ></img>
+              <figcaption>Hipster</figcaption>
+            </figure>
           </Grid>
+          <Grid item>
+            <figure>
+              <img
+                onClick={HandleModa}
+                alt="Urbano"
+                src="https://www.esdesignbarcelona.com/sites/default/files/estilos-de-moda-urbana-y-sus-caracteristicas-2.jpg"
+                width="350"
+                height="250"
+              ></img>
+              <figcaption>Urbano</figcaption>
+            </figure>
+          </Grid>
+        </Grid>
+        <Typography variant="h4">
+          Seleccione su personalidad: {Personalidad}
+        </Typography>
+        <Grid
+          container
+          alignItems="center"
+          justify="center"
+          spacing={0}
+          direction="row"
+        >
+          <Grid item xs={5}>
+            <figure>
+              <img
+                onClick={HandlePersonalidad}
+                alt="Introvertida"
+                align="center"
+                src="https://www.psico.mx/site/article/58060/47901/shutterstock-1682028859_ai1.jpg"
+                width="450"
+                height="300"
+              />
+              <figcaption>Introvertida</figcaption>
+            </figure>
+          </Grid>
+          <Grid item xs={5}>
+            <figure>
+              <img
+                onClick={HandlePersonalidad}
+                alt="Extrovertida"
+                src="https://image.freepik.com/vector-gratis/extrovertido-concepto-extraversion-e-introversion-joven-mujer-feliz-centro-atencion-hablando_100478-392.jpg"
+                width="450"
+                height="300"
+              />
+              <figcaption>Extrovertida</figcaption>
+            </figure>
+          </Grid>
+        </Grid>
 
-          <Typography variant="h4">
-            Del 1 al 10 ¿Qué tan ocupad@ estás?: {NivelOcupacion}
-          </Typography>
-          <Grid
-            container
-            alignItems="center"
-            justify="center"
-            spacing={0}
-            direction="row"
-          >
-            <Grid item xs={5}>
-              <figure>
-                <img
-                  onClick={HandleOcupacion}
-                  alt="Libre"
-                  align="center"
-                  src={imgOcupacionMujer[1]}
-                  width="450"
-                  height="300"
-                />
-                <figcaption>Libre</figcaption>
-              </figure>
-            </Grid>
-            <Grid item xs={5}>
-              <figure>
-                <img
-                  onClick={HandleOcupacion}
-                  alt="Ocupada"
-                  src={imgOcupacionMujer[0]}
-                  width="450"
-                  height="300"
-                />
-                <figcaption>Ocupada</figcaption>
-              </figure>
-            </Grid>
+        <Typography variant="h4">
+          Del 1 al 10 ¿Qué tan ocupad@ estás?: {NivelOcupacion}
+        </Typography>
+        <Grid
+          container
+          alignItems="center"
+          justify="center"
+          spacing={0}
+          direction="row"
+        >
+          <Grid item xs={5}>
+            <figure>
+              <img
+                onClick={HandleOcupacion}
+                alt="Libre"
+                align="center"
+                src={imgOcupacionMujer[1]}
+                width="450"
+                height="300"
+              />
+              <figcaption>Libre</figcaption>
+            </figure>
           </Grid>
+          <Grid item xs={5}>
+            <figure>
+              <img
+                onClick={HandleOcupacion}
+                alt="Ocupada"
+                src={imgOcupacionMujer[0]}
+                width="450"
+                height="300"
+              />
+              <figcaption>Ocupada</figcaption>
+            </figure>
+          </Grid>
+        </Grid>
       </Wrapper>
       <div>
         <Button
@@ -325,5 +337,5 @@ const App = () => {
       </div>
     </ThemeProvider>
   );
-}
+};
 export default App;
