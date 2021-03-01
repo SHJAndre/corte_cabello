@@ -1,6 +1,8 @@
 //import Busqueda from "./InferenciaCorte"
 const Varon = require('./Varon.json');
 const Mujer = require('./Mujer.json');
+const _ = require('lodash');
+
 function Busqueda(pcolorCabello,pcolorPiel,pformaRostro,pestilo,patrevimiento,ptipoCabello,pocupamiento)
 {
   var PersonaEncontrada=_.find(Mujer,function(persona){
@@ -370,5 +372,5 @@ var CP=4;
 var P=4;
 var TipoCabello = 3;
 var Nivel = 8;
-CorteRecomendado(CC,CP,"gOvalado","gClasico",P,TipoCabello,Nivel);
 
+console.log(CorteRecomendado(CC,CP,'gOvalado','gClasico ',P,TipoCabello,Nivel))
