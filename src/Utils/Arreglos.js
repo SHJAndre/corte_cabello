@@ -100,7 +100,19 @@ export const imgOcupacionVaron = [
   "https://lamenteesmaravillosa.com/wp-content/uploads/2013/08/hombre-relajandose.jpg"
 ];
 export const imgEstilosMujer = [
+  //Clasico
   "https://i.ibb.co/6sbT5Pv/Beautiful-girl-at-the-image-of-Audrey-Hepburn-000075729923-Medium.jpg",
+  //Hispter
   "https://i.ibb.co/8PC3LQx/look-urbano-mujer-Hipster.jpg",
+  //Urbano
   "https://i.ibb.co/VLr65Pq/Fitness-sporty-girl-wearing-fashion-sportswear-over-street-wall-outdoor-sports-urban-style-Teen-mode.jpg",
 ];
+
+export const imgEstilosVaron=[
+  //Clasico
+  'https://i.ibb.co/VgyzdKh/Webp-net-resizeimage-12-1.jpg',
+  //hispter
+  'https://i.ibb.co/16B9Zgk/estilos-de-ropa-hombre-los-7-urbana-para-hombres-positive-estilo-5bf52aeb81e6f.jpg',
+  //urbano
+  'https://i.ibb.co/9qLmxfy/21f3fed206880337017af54dd4f0da36.jpg'
+]

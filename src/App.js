@@ -28,6 +28,7 @@ import {
   NivelesOcupacion,
   NivelesAtrevimiento,
   imgEstilosMujer,
+  imgEstilosVaron,
 } from "./Utils/Arreglos";
 import {
   Wrapper,
@@ -138,7 +139,7 @@ const App = () => {
         <h2> Tu corte recomendado es: </h2>
       </div>
       <div align="center" width="90%">
-        <img alt={OutCorte} src={OutCorte} width="100%" height='100%'></img>
+        <img alt={OutCorte} src={OutCorte} width="100%" height="100%"></img>
       </div>
       <div align="right">
         <Button
@@ -210,7 +211,9 @@ const App = () => {
         <Typography variant="h3" style={{ backgroundColor: "#fff" }}>
           Ingrese sus datos personales
         </Typography>
-        <Entrada style={{visibility:sexo==='mujer'?'visible':'collapse'}}>
+        <Entrada
+          style={{ visibility: sexo === "mujer" ? "visible" : "collapse" }}
+        >
           <Typography variant="h5">
             ¿Cuál es la opacidad de su cabello?
           </Typography>
@@ -318,7 +321,7 @@ const App = () => {
                   onClick={HandleModa}
                   alt="gClasico"
                   src={
-                    sexo === "mujer" ? imgEstilosMujer[0] : imgEstilosMujer[1]
+                    sexo === "mujer" ? imgEstilosMujer[0] : imgEstilosVaron[0]
                   }
                   width="100%"
                 />
@@ -336,7 +339,9 @@ const App = () => {
                   className="imgbutton"
                   onClick={HandleModa}
                   alt="gHipster"
-                  src="https://i.ibb.co/8PC3LQx/look-urbano-mujer-Hipster.jpg"
+                  src={
+                    sexo === "mujer" ? imgEstilosMujer[1] : imgEstilosVaron[1]
+                  }
                   width="100%"
                 ></img>
                 <figcaption>Hipster</figcaption>
@@ -353,7 +358,9 @@ const App = () => {
                   className="imgbutton"
                   onClick={HandleModa}
                   alt="gUrbano"
-                  src="https://i.ibb.co/VLr65Pq/Fitness-sporty-girl-wearing-fashion-sportswear-over-street-wall-outdoor-sports-urban-style-Teen-mode.jpg"
+                  src={
+                    sexo === "mujer" ? imgEstilosMujer[2] : imgEstilosVaron[2]
+                  }
                   width="100%"
                 ></img>
                 <figcaption>Urbano</figcaption>
