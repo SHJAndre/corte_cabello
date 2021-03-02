@@ -294,11 +294,11 @@ function TipoCabe(Escala)
 {
     //-------------------------------------------------------------------------------
     // Universo para variable Tipo de Cabello
-    var uTipoCabello = linspace(0,10, 100)
+    var uTipoCabello = linspace(0,5, 100)
 
     //-------------------------------------------------------------------------------
     //Parametros de conjuntos difusos: var Tipo de Cabello
-    var cLacio = [0,0,3]     
+    var cLacio = [-1,0,3]     
     var cCrespo = [1.5,4,4]            
     //-------------------------------------------------------------------------------
     //Grado de membresía para universo de Tipo de Cabello
