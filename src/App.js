@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NumberFormat from "react-number-format";
 import { EstilosComponentes } from "./Utils/EstilosMaterialUI";
 import "./App.css";
+import CorteRecomendado from "./Utils/Difuso"
 import {
   Modal,
   Slider,
@@ -37,10 +38,10 @@ const App = () => {
   const Estilos = EstilosComponentes();
   const [OpacidadCabello, setOpacidadCabello] = useState(0);
   const [Piel, setPiel] = useState(0);
-  const [FormaCara, setFormaCara] = useState("Ovalado");
+  const [FormaCara, setFormaCara] = useState("gOvalado");
   const [Personalidad, setPersonalidad] = useState(0);
   const [NivelOcupacion, setNivelOcupacion] = useState(0);
-  const [Moda, setModa] = useState("Clasico");
+  const [Moda, setModa] = useState("gClasico");
   const [OutCorte, setOutCorte] = useState("");
   const [modal, setModal] = useState(false);
   const [tipoCabello, setTipoCabello] = useState(0);
@@ -90,7 +91,9 @@ const App = () => {
     setModa(event.target.alt);
   };
   const HandleCorte = () => {
-    setOutCorte();
+    const Aux = CorteRecomendado('gOscuro',Piel,FormaCara,Moda,Personalidad,tipoCabello,NivelOcupacion);
+    setOutCorte(Aux);
+    abrirCerrar();
   };
   const HandleTipoCabello = (event, newValue) => {
     setTipoCabello(newValue);
@@ -155,7 +158,7 @@ const App = () => {
                 <figure>
                   <img
                     onClick={HandleTipoRostro}
-                    alt="Ovalado"
+                    alt="gOvalado"
                     src="https://i.ibb.co/qrMzxHx/formas-rostro-ovalado-Xx-Xx80.jpg"
                     style={{ maxWidth: 100 + "%" }}
                   />
@@ -166,7 +169,7 @@ const App = () => {
                 <figure>
                   <img
                     onClick={HandleTipoRostro}
-                    alt="Cuadrado"
+                    alt="gCuadrado"
                     src="https://i.ibb.co/txQVNbd/formas-rostro-cuadrado-Xx-Xx80.jpg"
                     style={{ maxWidth: 100 + "%" }}
                   />
@@ -185,7 +188,7 @@ const App = () => {
                 <figure>
                   <img
                     onClick={HandleTipoRostro}
-                    alt="Redondo"
+                    alt="gRedondo"
                     src="https://i.ibb.co/8bjWjz9/formas-rostro-redondo-Xx-Xx80.jpg"
                     style={{ maxWidth: 100 + "%" }}
                   />
@@ -196,7 +199,7 @@ const App = () => {
                 <figure>
                   <img
                     onClick={HandleTipoRostro}
-                    alt="Corazon"
+                    alt="gCorazon"
                     src="https://i.ibb.co/JrrQWfq/formas-rostro-corazon-Xx-Xx80.jpg"
                     style={{ maxWidth: 100 + "%" }}
                   />
@@ -221,7 +224,7 @@ const App = () => {
               <figure>
                 <img
                   onClick={HandleModa}
-                  alt="Clasico"
+                  alt="gClasico"
                   src="https://i.ibb.co/6sbT5Pv/Beautiful-girl-at-the-image-of-Audrey-Hepburn-000075729923-Medium.jpg"
                   width="350"
                   height="250"
@@ -233,7 +236,7 @@ const App = () => {
               <figure>
                 <img
                   onClick={HandleModa}
-                  alt="Hipster"
+                  alt="gHipster"
                   src="https://i.ibb.co/8PC3LQx/look-urbano-mujer-Hipster.jpg"
                   width="350"
                   height="250"
@@ -245,7 +248,7 @@ const App = () => {
               <figure>
                 <img
                   onClick={HandleModa}
-                  alt="Urbano"
+                  alt="gUrbano"
                   src="https://i.ibb.co/VLr65Pq/Fitness-sporty-girl-wearing-fashion-sportswear-over-street-wall-outdoor-sports-urban-style-Teen-mode.jpg"
                   width="350"
                   height="250"
@@ -361,7 +364,7 @@ const App = () => {
       </Wrapper>
       <div>
         <Button
-          onClick={{ HandleCorte }}
+          onClick={ HandleCorte }
           style={{ maxHeight: "70px", minHeight: "70px" }}
           color="secondary"
           variant="contained"
