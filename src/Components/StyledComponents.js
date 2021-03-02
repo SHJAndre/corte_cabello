@@ -34,4 +34,12 @@ export const IMC = styled.div`
 `;
 export const Entrada = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 50px 20px 50px;
+  background-color: #eddeff;
+  border-radius: 10px;
+  margin: 30px 30px 30px 30px;
+  width: 80%;
+  height:60%;
 `;

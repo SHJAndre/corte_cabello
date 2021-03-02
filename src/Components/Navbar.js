@@ -44,11 +44,13 @@ const useStyle = makeStyles((theme) => ({
     //marginBottom: "1rem", // margen opcional
   },
 }));
+var Mujer = false
 const Navbar = () => {
   const classes = useStyle();
   const [checkedSexo, setChekedSexo] = useState(false);
   const handleSexo = (event, newValue) => {
     setChekedSexo(newValue);
+    Mujer = checkedSexo;
   };
   return (
     <React.Fragment>
@@ -79,4 +81,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar
+export {Navbar, Mujer}
