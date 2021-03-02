@@ -299,7 +299,7 @@ function TipoCabe(Escala)
     //-------------------------------------------------------------------------------
     //Parametros de conjuntos difusos: var Tipo de Cabello
     var cLacio = [-1,0,3]     
-    var cCrespo = [1.5,4,4]            
+    var cCrespo = [1.5,4,6]            
     //-------------------------------------------------------------------------------
     //Grado de membresía para universo de Tipo de Cabello
     var gLacio  = triangular(uTipoCabello, cLacio)
