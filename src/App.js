@@ -23,6 +23,7 @@ import {
   ColorPiel,
   OpacidadRango,
   imgOcupacionMujer,
+  imgOcupacionVaron,
   TiposCabello,
   NivelesOcupacion,
   NivelesAtrevimiento,
@@ -83,7 +84,7 @@ const Navbar = (props) => {
   const classes = useStyle();
   const [checkedSexo, setChekedSexo] = useState(false);
   const handleSexo = (event, newValue) => {
-    props.handleSexo()
+    props.handleSexo();
     setChekedSexo(newValue);
   };
   return (
@@ -127,7 +128,7 @@ const App = () => {
   const [tipoCabello, setTipoCabello] = useState(0);
   const [sexo, setSexo] = useState("mujer");
   const handleSexo = (value) => {
-    setSexo(sexo==='mujer'?'varon':'mujer');
+    setSexo(sexo === "mujer" ? "varon" : "mujer");
   };
   const abrirCerrar = () => {
     setModal(!modal);
@@ -135,10 +136,10 @@ const App = () => {
   const body = (
     <div className={Estilos.modal}>
       <div align="center">
-        <h2> Resultado </h2>
+        <h2> Tu corte recomendado es: </h2>
       </div>
       <div align="center">
-        <img alt={OutCorte} src={OutCorte} width="50%"></img>
+        <img alt={OutCorte} src={OutCorte} width="100%"></img>
       </div>
       <div align="right">
         <Button
@@ -192,11 +193,11 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Navbar handleSexo={handleSexo}/>
+      <Navbar handleSexo={handleSexo} />
       <Modal
         open={modal}
         onClose={abrirCerrar}
-        style={{ display: "flex", alignItems: "center", width: 80 + "%" }}
+        style={{ display: "flex", alignItems: "center", width: 100 + "%" }}
       >
         {body}
       </Modal>
@@ -243,9 +244,10 @@ const App = () => {
             spacing={0}
             direction="row"
           >
-            <Grid item container style={{ width: 50 + "%" }}>
+            <Grid item container style={{ width: 25 + "%" }}>
               <figure>
                 <img
+                  className="imgbutton"
                   onClick={HandleTipoRostro}
                   alt="gOvalado"
                   src="https://i.ibb.co/qrMzxHx/formas-rostro-ovalado-Xx-Xx80.jpg"
@@ -254,9 +256,10 @@ const App = () => {
                 <figcaption>Ovalado</figcaption>
               </figure>
             </Grid>
-            <Grid item container style={{ width: 50 + "%" }}>
+            <Grid item container style={{ width: 25 + "%" }}>
               <figure>
                 <img
+                  className="imgbutton"
                   onClick={HandleTipoRostro}
                   alt="gCuadrado"
                   src="https://i.ibb.co/txQVNbd/formas-rostro-cuadrado-Xx-Xx80.jpg"
@@ -266,9 +269,10 @@ const App = () => {
               </figure>
             </Grid>
 
-            <Grid item container style={{ width: 50 + "%" }}>
+            <Grid item container style={{ width: 25 + "%" }}>
               <figure>
                 <img
+                  className="imgbutton"
                   onClick={HandleTipoRostro}
                   alt="gRedondo"
                   src="https://i.ibb.co/8bjWjz9/formas-rostro-redondo-Xx-Xx80.jpg"
@@ -277,9 +281,10 @@ const App = () => {
                 <figcaption>Redondo</figcaption>
               </figure>
             </Grid>
-            <Grid item container style={{ width: 50 + "%" }}>
+            <Grid item container style={{ width: 25 + "%" }}>
               <figure>
                 <img
+                  className="imgbutton"
                   onClick={HandleTipoRostro}
                   alt="gCorazon"
                   src="https://i.ibb.co/JrrQWfq/formas-rostro-corazon-Xx-Xx80.jpg"
@@ -305,13 +310,16 @@ const App = () => {
               item
               container
               alignItems="center"
-              style={{ width: 50 + "%" }}
+              style={{ width: 33 + "%" }}
             >
               <figure>
                 <img
+                  className="imgbutton"
                   onClick={HandleModa}
                   alt="gClasico"
-                  src={sexo==='mujer' ? imgEstilosMujer[0] : imgEstilosMujer[1]}
+                  src={
+                    sexo === "mujer" ? imgEstilosMujer[0] : imgEstilosMujer[1]
+                  }
                   width="100%"
                 />
                 <figcaption>Clasico</figcaption>
@@ -321,10 +329,11 @@ const App = () => {
               item
               container
               alignItems="center"
-              style={{ width: 50 + "%" }}
+              style={{ width: 33 + "%" }}
             >
               <figure>
                 <img
+                  className="imgbutton"
                   onClick={HandleModa}
                   alt="gHipster"
                   src="https://i.ibb.co/8PC3LQx/look-urbano-mujer-Hipster.jpg"
@@ -337,10 +346,11 @@ const App = () => {
               item
               container
               alignItems="center"
-              style={{ width: 50 + "%" }}
+              style={{ width: 33 + "%" }}
             >
               <figure>
                 <img
+                  className="imgbutton"
                   onClick={HandleModa}
                   alt="gUrbano"
                   src="https://i.ibb.co/VLr65Pq/Fitness-sporty-girl-wearing-fashion-sportswear-over-street-wall-outdoor-sports-urban-style-Teen-mode.jpg"
@@ -360,7 +370,7 @@ const App = () => {
             spacing={0}
             direction="row"
           >
-            <Grid item container style={{ width: 50 + "%" }}>
+            <Grid item container style={{ width: 33 + "%" }}>
               <figure>
                 <img
                   alt="Introvertida"
@@ -371,7 +381,7 @@ const App = () => {
                 <figcaption>Reservad@</figcaption>
               </figure>
             </Grid>
-            <Grid item container style={{ width: 50 + "%" }}>
+            <Grid item container style={{ width: 33 + "%" }}>
               <figure>
                 <img
                   alt="Extrovertida"
@@ -399,15 +409,31 @@ const App = () => {
             spacing={0}
             direction="row"
           >
-            <Grid item container style={{ width: 50 + "%" }}>
+            <Grid item container style={{ width: 33 + "%" }}>
               <figure>
-                <img alt="Libre" src={imgOcupacionMujer[1]} width="100%" />
+                <img
+                  alt="Libre"
+                  src={
+                    sexo === "mujer"
+                      ? imgOcupacionVaron[1]
+                      : imgOcupacionMujer[1]
+                  }
+                  width="100%"
+                />
                 <figcaption>Libre</figcaption>
               </figure>
             </Grid>
-            <Grid item container style={{ width: 50 + "%" }}>
+            <Grid item container style={{ width: 33 + "%" }}>
               <figure>
-                <img alt="Ocupada" src={imgOcupacionMujer[0]} width="100%" />
+                <img
+                  alt="Ocupada"
+                  src={
+                    sexo === "mujer"
+                      ? imgOcupacionVaron[0]
+                      : imgOcupacionMujer[0]
+                  }
+                  width="100%"
+                />
                 <figcaption>Ocupada</figcaption>
               </figure>
             </Grid>
