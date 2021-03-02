@@ -45,12 +45,12 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 var Mujer = false
-const Navbar = () => {
+const Navbar = (props) => {
   const classes = useStyle();
   const [checkedSexo, setChekedSexo] = useState(false);
   const handleSexo = (event, newValue) => {
-    setChekedSexo(newValue);
-    Mujer = checkedSexo;
+    Mujer = newValue
+    setChekedSexo(Mujer);
   };
   return (
     <React.Fragment>

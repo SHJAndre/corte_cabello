@@ -51,12 +51,12 @@ export const NivelesOcupacion = [
   { value: 4, label: "Mucho" },
   { value: 5, label: "Demasiado" },
 ];
-export const NivelesAtrevimiento=[
-  {value:0,label:'Reservad@'},
-  {value:1,label:'Tranquil@'},
-  {value:2,label:'Energic@'},
-  {value:3,label:'Alocad@'},
-]
+export const NivelesAtrevimiento = [
+  { value: 0, label: "Reservad@" },
+  { value: 1, label: "Tranquil@" },
+  { value: 2, label: "Energic@" },
+  { value: 3, label: "Alocad@" },
+];
 export const TiposCabello = [
   {
     value: 0,
@@ -64,7 +64,7 @@ export const TiposCabello = [
   },
   { value: 1, label: "2a" },
   { value: 2, label: "2b" },
-    { value: 3, label: "2c" },
+  { value: 3, label: "2c" },
   { value: 4, label: "3a" },
   { value: 5, label: "3b" },
   { value: 6, label: "3c" },
@@ -113,4 +113,9 @@ export const imgOcupacionVaron = [
     url:
       "https://lamenteesmaravillosa.com/wp-content/uploads/2013/08/hombre-relajandose.jpg",
   },
+];
+export const imgEstilosMujer = [
+  "https://i.ibb.co/6sbT5Pv/Beautiful-girl-at-the-image-of-Audrey-Hepburn-000075729923-Medium.jpg",
+  "https://i.ibb.co/8PC3LQx/look-urbano-mujer-Hipster.jpg",
+  "https://i.ibb.co/VLr65Pq/Fitness-sporty-girl-wearing-fashion-sportswear-over-street-wall-outdoor-sports-urban-style-Teen-mode.jpg",
 ];

@@ -1,8 +1,10 @@
+import { withStyles } from "@material-ui/core/styles";
+
 import React, { useState } from "react";
 import NumberFormat from "react-number-format";
 import { EstilosComponentes } from "./Utils/EstilosMaterialUI";
 import "./App.css";
-import CorteRecomendado from "./Utils/Difuso"
+import CorteRecomendado from "./Utils/Difuso";
 import {
   Modal,
   Slider,
@@ -11,8 +13,11 @@ import {
   Typography,
   Grid,
   Button,
+  Switch,
+  makeStyles,
+  AppBar,
+  Toolbar,
 } from "@material-ui/core";
-
 import {
   OpacidadColores,
   ColorPiel,
@@ -21,8 +26,8 @@ import {
   TiposCabello,
   NivelesOcupacion,
   NivelesAtrevimiento,
+  imgEstilosMujer,
 } from "./Utils/Arreglos";
-
 import {
   Wrapper,
   EntradaDifusa,
@@ -31,8 +36,83 @@ import {
 } from "./Components/StyledComponents";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./Utils/temaConfig";
-import { Navbar, Mujer } from "./Components/Navbar";
 import Footer from "./Components/footer";
+
+var mujer = false;
+const AntSwitch = withStyles((theme) => ({
+  root: {
+    width: 28,
+    height: 16,
+    padding: 0,
+    display: "flex",
+  },
+  switchBase: {
+    padding: 2,
+    color: theme.palette.grey[500],
+    "&$checked": {
+      transform: "translateX(12px)",
+      color: theme.palette.common.white,
+      "& + $track": {
+        opacity: 1,
+        backgroundColor: theme.palette.primary.main,
+        borderColor: theme.palette.primary.main,
+      },
+    },
+  },
+  thumb: {
+    width: 12,
+    height: 12,
+    boxShadow: "none",
+  },
+  track: {
+    border: `1px solid ${theme.palette.grey[500]}`,
+    borderRadius: 16 / 2,
+    opacity: 1,
+    backgroundColor: theme.palette.common.white,
+  },
+  checked: {},
+}))(Switch);
+const useStyle = makeStyles((theme) => ({
+  offset: {
+    ...theme.mixins.toolbar, // min-height: 56px;
+    //marginBottom: "1rem", // margen opcional
+  },
+}));
+
+const Navbar = () => {
+  const classes = useStyle();
+  const [checkedSexo, setChekedSexo] = useState(false);
+  const handleSexo = (event, newValue) => {
+    mujer = newValue;
+    setChekedSexo(mujer);
+  };
+  return (
+    <React.Fragment>
+      <AppBar position="fixed" color={checkedSexo ? "primary" : "secondary"}>
+        <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography variant="h6">
+            {" "}
+            Recomendación de corte de cabello
+          </Typography>
+          <Typography component="div">
+            <Grid component="label" container alignItems="center" spacing={1}>
+              <Grid item>Varones</Grid>
+              <Grid item>
+                <AntSwitch
+                  checked={checkedSexo}
+                  onChange={handleSexo}
+                  name="Sexo"
+                />
+              </Grid>
+              <Grid item>Mujeres</Grid>
+            </Grid>
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <div className={classes.offset}></div>
+    </React.Fragment>
+  );
+};
 
 const App = () => {
   const Estilos = EstilosComponentes();
@@ -45,7 +125,6 @@ const App = () => {
   const [OutCorte, setOutCorte] = useState("");
   const [modal, setModal] = useState(false);
   const [tipoCabello, setTipoCabello] = useState(0);
-
   const abrirCerrar = () => {
     setModal(!modal);
   };
@@ -81,7 +160,7 @@ const App = () => {
   const HandleTipoRostro = (event) => {
     setFormaCara(event.target.alt);
   };
-  const HandlePersonalidad = (event,newValue) => {
+  const HandlePersonalidad = (event, newValue) => {
     setPersonalidad(newValue);
   };
   const HandleOcupacion = (event, newValue) => {
@@ -91,7 +170,15 @@ const App = () => {
     setModa(event.target.alt);
   };
   const HandleCorte = () => {
-    const Aux = CorteRecomendado(OpacidadCabello,Piel,FormaCara,Moda,Personalidad,tipoCabello,NivelOcupacion);
+    const Aux = CorteRecomendado(
+      OpacidadCabello,
+      Piel,
+      FormaCara,
+      Moda,
+      Personalidad,
+      tipoCabello,
+      NivelOcupacion
+    );
     setOutCorte(Aux);
     abrirCerrar();
   };
@@ -102,6 +189,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
+      {mujer.toString()}
       <Modal open={modal} onClose={abrirCerrar}>
         {body}
       </Modal>
@@ -160,7 +248,7 @@ const App = () => {
                     onClick={HandleTipoRostro}
                     alt="gOvalado"
                     src="https://i.ibb.co/qrMzxHx/formas-rostro-ovalado-Xx-Xx80.jpg"
-                    style={{ width: 100+'%'}}
+                    style={{ width: 100 + "%" }}
                   />
                   <figcaption>Ovalado</figcaption>
                 </figure>
@@ -220,12 +308,12 @@ const App = () => {
             spacing={0}
             direction="row"
           >
-            <Grid item >
+            <Grid item>
               <figure>
                 <img
                   onClick={HandleModa}
                   alt="gClasico"
-                  src="https://i.ibb.co/6sbT5Pv/Beautiful-girl-at-the-image-of-Audrey-Hepburn-000075729923-Medium.jpg"
+                  src={mujer?imgEstilosMujer[0]:imgEstilosMujer[1]}
                   width="100%"
                 />
                 <figcaption>Clasico</figcaption>
@@ -280,7 +368,6 @@ const App = () => {
             <Grid item>
               <figure>
                 <img
-
                   alt="Extrovertida"
                   src="https://i.ibb.co/hR1dzLP/extrovertido-concepto-extraversion-e-introversion-joven-mujer-feliz-centro-atencion-hablando-100478.jpg"
                   width="80%"
@@ -321,11 +408,7 @@ const App = () => {
             </Grid>
             <Grid item>
               <figure>
-                <img
-                  alt="Ocupada"
-                  src={imgOcupacionMujer[0]}
-                  width="100%"
-                />
+                <img alt="Ocupada" src={imgOcupacionMujer[0]} width="100%" />
                 <figcaption>Ocupada</figcaption>
               </figure>
             </Grid>
@@ -358,7 +441,7 @@ const App = () => {
       </Wrapper>
       <div>
         <Button
-          onClick={ HandleCorte }
+          onClick={HandleCorte}
           style={{ maxHeight: "70px", minHeight: "70px" }}
           color="secondary"
           variant="contained"
