@@ -95,15 +95,9 @@ export const imgOcupacionMujer = [
 ];
 export const imgOcupacionVaron = [
   //Ocupado
-  {
-    url:
-      "https://gestion.pe/resizer/JY-WYEdvSFXxmF2dV0b8K_FM31M=/580x330/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/Z2Y6X2HCFBHEXPOHUCZMHZ6RJM.jpg",
-  },
+  "https://gestion.pe/resizer/JY-WYEdvSFXxmF2dV0b8K_FM31M=/580x330/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/Z2Y6X2HCFBHEXPOHUCZMHZ6RJM.jpg",
   //Libre
-  {
-    url:
-      "https://lamenteesmaravillosa.com/wp-content/uploads/2013/08/hombre-relajandose.jpg",
-  },
+  "https://lamenteesmaravillosa.com/wp-content/uploads/2013/08/hombre-relajandose.jpg"
 ];
 export const imgEstilosMujer = [
   "https://i.ibb.co/6sbT5Pv/Beautiful-girl-at-the-image-of-Audrey-Hepburn-000075729923-Medium.jpg",
