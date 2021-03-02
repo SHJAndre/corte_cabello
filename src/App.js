@@ -176,6 +176,7 @@ const App = () => {
   };
   const HandleCorte = () => {
     const Aux = CorteRecomendado(
+      sexo,
       OpacidadCabello,
       Piel,
       FormaCara,
