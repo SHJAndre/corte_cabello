@@ -280,7 +280,7 @@ const App = () => {
             <Grid item>
               <figure>
                 <img
-                  onClick={HandlePersonalidad}
+
                   alt="Extrovertida"
                   src="https://i.ibb.co/hR1dzLP/extrovertido-concepto-extraversion-e-introversion-joven-mujer-feliz-centro-atencion-hablando-100478.jpg"
                   width="80%"
