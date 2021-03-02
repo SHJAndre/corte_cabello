@@ -265,11 +265,11 @@ function Personalidad(Escala)
 {
     //-------------------------------------------------------------------------------
     //Universo para variable Personalidad (1-10)
-    var uPersonalidad = linspace(0,5,50)
+    var uPersonalidad = linspace(0,3,100)
     //-------------------------------------------------------------------------------
     //Parametros de conjuntos difusos: var Personalidad
-    var cReservado = [1,2,4]     
-    var cAlocado = [3,4,5]        
+    var cReservado = [0,1,2]     
+    var cAlocado = [1,2,3]        
     //-------------------------------------------------------------------------------
     //Grado de membresía para universo Personalidad
     var gReservado  = triangular(uPersonalidad, cReservado)
