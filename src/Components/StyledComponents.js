@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
   row-gap: 1vh;
+  padding-top: 3vh;
 `;
 
 export const EntradaDifusa = styled.div`

@@ -3,7 +3,7 @@ const Varon = require('./Varon.json');
 const Mujer = require('./Mujer.json');
 const _ = require('lodash');
 
-function Busqueda(pcolorCabello,pcolorPiel,pformaRostro,pestilo,patrevimiento,ptipoCabello,pocupamiento)
+function BusquedaMujer(pcolorCabello,pcolorPiel,pformaRostro,pestilo,patrevimiento,ptipoCabello,pocupamiento)
 {
   var PersonaEncontrada=_.find(Mujer,function(persona){
     return ((persona.colorCabello==pcolorCabello)&&(persona.colorPiel==pcolorPiel)&& (persona.formaRostro==pformaRostro)&&(persona.estilo==pestilo)&&(persona.atrevimiento==patrevimiento)&&(persona.tipoCabello==ptipoCabello)&&(persona.ocupamiento==pocupamiento));
@@ -11,6 +11,16 @@ function Busqueda(pcolorCabello,pcolorPiel,pformaRostro,pestilo,patrevimiento,pt
   var Link=PersonaEncontrada.urlCorte;
   return Link;
 }
+
+function BusquedaVaron(pcolorPiel,pformaRostro,pestilo,patrevimiento,ptipoCabello,pocupamiento)
+{
+  var PersonaEncontrada=_.find(Varon,function(persona){
+    return ((persona.colorCabello=='gOscuro')&&(persona.colorPiel==pcolorPiel)&& (persona.formaRostro==pformaRostro)&&(persona.estilo==pestilo)&&(persona.atrevimiento==patrevimiento)&&(persona.tipoCabello==ptipoCabello)&&(persona.ocupamiento==pocupamiento));
+    });
+  var Link=PersonaEncontrada.urlCorte;
+  return Link;
+}
+
 function triangular(x,param)
 {
   var a=parseFloat(param[0]);
