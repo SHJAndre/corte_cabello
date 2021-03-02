@@ -5,7 +5,7 @@ const _ = require('lodash');
 
 function Busqueda(pcolorCabello,pcolorPiel,pformaRostro,pestilo,patrevimiento,ptipoCabello,pocupamiento)
 {
-  var PersonaEncontrada=_.find(Varon,function(persona){
+  var PersonaEncontrada=_.find(Mujer,function(persona){
     return ((persona.colorCabello==pcolorCabello)&&(persona.colorPiel==pcolorPiel)&& (persona.formaRostro==pformaRostro)&&(persona.estilo==pestilo)&&(persona.atrevimiento==patrevimiento)&&(persona.tipoCabello==ptipoCabello)&&(persona.ocupamiento==pocupamiento));
     });
   var Link=PersonaEncontrada.urlCorte;

@@ -91,7 +91,7 @@ const App = () => {
     setModa(event.target.alt);
   };
   const HandleCorte = () => {
-    const Aux = CorteRecomendado('gOscuro',Piel,FormaCara,Moda,Personalidad,tipoCabello,NivelOcupacion);
+    const Aux = CorteRecomendado(OpacidadCabello,Piel,FormaCara,Moda,Personalidad,tipoCabello,NivelOcupacion);
     setOutCorte(Aux);
     abrirCerrar();
   };
