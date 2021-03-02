@@ -39,7 +39,6 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./Utils/temaConfig";
 import Footer from "./Components/footer";
 
-var mujer = true;
 const AntSwitch = withStyles((theme) => ({
   root: {
     width: 28,
@@ -126,9 +125,9 @@ const App = () => {
   const [OutCorte, setOutCorte] = useState("");
   const [modal, setModal] = useState(false);
   const [tipoCabello, setTipoCabello] = useState(0);
-  const [sexo, setSexo] = useState("mujer");
+  const [sexo, setSexo] = useState("varon");
   const handleSexo = (value) => {
-    setSexo(sexo === "mujer" ? "varon" : "mujer");
+    setSexo(sexo === "varon" ? "mujer" : "varon");
   };
   const abrirCerrar = () => {
     setModal(!modal);
@@ -138,8 +137,8 @@ const App = () => {
       <div align="center">
         <h2> Tu corte recomendado es: </h2>
       </div>
-      <div align="center">
-        <img alt={OutCorte} src={OutCorte} height="50%"></img>
+      <div align="center" width="90%">
+        <img alt={OutCorte} src={OutCorte} width="100%" height='100%'></img>
       </div>
       <div align="right">
         <Button
@@ -211,7 +210,7 @@ const App = () => {
         <Typography variant="h3" style={{ backgroundColor: "#fff" }}>
           Ingrese sus datos personales
         </Typography>
-        <Entrada>
+        <Entrada style={{visibility:sexo==='mujer'?'visible':'collapse'}}>
           <Typography variant="h5">
             ¿Cuál es la opacidad de su cabello?
           </Typography>
@@ -394,6 +393,7 @@ const App = () => {
             </Grid>
           </Grid>
           <Slider
+            className={Estilos.SliderNormal}
             onChange={HandlePersonalidad}
             defaultValue={0}
             min={0}
@@ -416,8 +416,8 @@ const App = () => {
                   alt="Libre"
                   src={
                     sexo === "mujer"
-                      ? imgOcupacionVaron[1]
-                      : imgOcupacionMujer[1]
+                      ? imgOcupacionMujer[1]
+                      : imgOcupacionVaron[1]
                   }
                   width="100%"
                 />
@@ -430,8 +430,8 @@ const App = () => {
                   alt="Ocupada"
                   src={
                     sexo === "mujer"
-                      ? imgOcupacionVaron[0]
-                      : imgOcupacionMujer[0]
+                      ? imgOcupacionMujer[0]
+                      : imgOcupacionVaron[0]
                   }
                   width="100%"
                 />
@@ -440,6 +440,7 @@ const App = () => {
             </Grid>
           </Grid>
           <Slider
+            className={Estilos.SliderNormal}
             onChange={HandleOcupacion}
             defaultValue={0}
             min={0}
@@ -456,6 +457,7 @@ const App = () => {
             width="70%"
           />
           <Slider
+            className={Estilos.SliderNormal}
             onChange={HandleTipoCabello}
             defaultValue={0}
             min={0}

@@ -21,7 +21,8 @@ export const EstilosComponentes = makeStyles((theme) => ({
       alignItems: 'center',
       top: "50%",
       left: "50%",
-      height: '65%',
+      height: '70%',
+      width:'50%',
       transform: "translate(-50%,-50%)",
       backgroundColor: "white",
       borderRadius: 20,
@@ -42,6 +43,9 @@ export const EstilosComponentes = makeStyles((theme) => ({
       borderRadius: 5,
       maxWidth: 80+'%',
       color: "#fff",
+    },
+    SliderNormal:{
+      width: '80%'
     },
     paper: {
       padding: theme.spacing(2),

@@ -41,6 +41,5 @@ export const Entrada = styled.div`
   background-color: #e0e0eb;
   border-radius: 10px;
   margin: 30px 30px 30px 30px;
-  width: 80%;
-  height:60%;
+  width: 60%;
 `;
