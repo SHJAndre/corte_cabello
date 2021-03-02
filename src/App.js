@@ -154,24 +154,24 @@ const App = () => {
               alignItems="center"
               justify="center"
             >
-              <Grid item xs={3}>
+              <Grid item>
                 <figure>
                   <img
                     onClick={HandleTipoRostro}
                     alt="gOvalado"
                     src="https://i.ibb.co/qrMzxHx/formas-rostro-ovalado-Xx-Xx80.jpg"
-                    style={{ maxWidth: 100 + "%" }}
+                    style={{ width: 100+'%'}}
                   />
                   <figcaption>Ovalado</figcaption>
                 </figure>
               </Grid>
-              <Grid item xs={3}>
+              <Grid item>
                 <figure>
                   <img
                     onClick={HandleTipoRostro}
                     alt="gCuadrado"
                     src="https://i.ibb.co/txQVNbd/formas-rostro-cuadrado-Xx-Xx80.jpg"
-                    style={{ maxWidth: 100 + "%" }}
+                    style={{ width: 100 + "%" }}
                   />
                   <figcaption>Cuadrado</figcaption>
                 </figure>
@@ -184,24 +184,24 @@ const App = () => {
               alignItems="center"
               justify="center"
             >
-              <Grid item xs={3}>
+              <Grid item>
                 <figure>
                   <img
                     onClick={HandleTipoRostro}
                     alt="gRedondo"
                     src="https://i.ibb.co/8bjWjz9/formas-rostro-redondo-Xx-Xx80.jpg"
-                    style={{ maxWidth: 100 + "%" }}
+                    style={{ width: 100 + "%" }}
                   />
                   <figcaption>Redondo</figcaption>
                 </figure>
               </Grid>
-              <Grid item xs={3}>
+              <Grid item>
                 <figure>
                   <img
                     onClick={HandleTipoRostro}
                     alt="gCorazon"
                     src="https://i.ibb.co/JrrQWfq/formas-rostro-corazon-Xx-Xx80.jpg"
-                    style={{ maxWidth: 100 + "%" }}
+                    style={{ width: 100 + "%" }}
                   />
                   <figcaption>Corazon</figcaption>
                 </figure>
@@ -220,26 +220,24 @@ const App = () => {
             spacing={0}
             direction="row"
           >
-            <Grid item xs={4}>
+            <Grid item >
               <figure>
                 <img
                   onClick={HandleModa}
                   alt="gClasico"
                   src="https://i.ibb.co/6sbT5Pv/Beautiful-girl-at-the-image-of-Audrey-Hepburn-000075729923-Medium.jpg"
-                  width="350"
-                  height="250"
+                  width="100%"
                 />
                 <figcaption>Clasico</figcaption>
               </figure>
             </Grid>
-            <Grid item xs={4} style={{ alignItems: "center" }}>
+            <Grid item style={{ alignItems: "center" }}>
               <figure>
                 <img
                   onClick={HandleModa}
                   alt="gHipster"
                   src="https://i.ibb.co/8PC3LQx/look-urbano-mujer-Hipster.jpg"
-                  width="350"
-                  height="250"
+                  width="100%"
                 ></img>
                 <figcaption>Hipster</figcaption>
               </figure>
@@ -250,8 +248,7 @@ const App = () => {
                   onClick={HandleModa}
                   alt="gUrbano"
                   src="https://i.ibb.co/VLr65Pq/Fitness-sporty-girl-wearing-fashion-sportswear-over-street-wall-outdoor-sports-urban-style-Teen-mode.jpg"
-                  width="350"
-                  height="250"
+                  width="100%"
                 ></img>
                 <figcaption>Urbano</figcaption>
               </figure>
@@ -269,26 +266,24 @@ const App = () => {
             spacing={0}
             direction="row"
           >
-            <Grid item xs={5}>
+            <Grid item>
               <figure>
                 <img
                   alt="Introvertida"
                   align="center"
                   src="https://i.ibb.co/DVfSwT7/shutterstock-1682028859-ai1.jpg"
-                  width="450"
-                  height="300"
+                  width="80%"
                 />
                 <figcaption>Introvertida</figcaption>
               </figure>
             </Grid>
-            <Grid item xs={5}>
+            <Grid item>
               <figure>
                 <img
                   onClick={HandlePersonalidad}
                   alt="Extrovertida"
                   src="https://i.ibb.co/hR1dzLP/extrovertido-concepto-extraversion-e-introversion-joven-mujer-feliz-centro-atencion-hablando-100478.jpg"
-                  width="450"
-                  height="300"
+                  width="80%"
                 />
                 <figcaption>Extrovertida</figcaption>
               </figure>
@@ -313,25 +308,23 @@ const App = () => {
             spacing={0}
             direction="row"
           >
-            <Grid item xs={5}>
+            <Grid item>
               <figure>
                 <img
                   alt="Libre"
                   align="center"
                   src={imgOcupacionMujer[1]}
-                  width="450"
-                  height="300"
+                  width="100%"
                 />
                 <figcaption>Libre</figcaption>
               </figure>
             </Grid>
-            <Grid item xs={5}>
+            <Grid item>
               <figure>
                 <img
                   alt="Ocupada"
                   src={imgOcupacionMujer[0]}
-                  width="450"
-                  height="300"
+                  width="100%"
                 />
                 <figcaption>Ocupada</figcaption>
               </figure>
@@ -352,6 +345,7 @@ const App = () => {
           <img
             alt="TipoCabelo"
             src="https://i.ibb.co/NCKBvDg/tipo-Cabello.jpg"
+            width="100%"
           />
           <Slider
             onChange={HandleTipoCabello}
