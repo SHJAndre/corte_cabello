@@ -38,7 +38,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./Utils/temaConfig";
 import Footer from "./Components/footer";
 
-var mujer = false;
+var mujer = true;
 const AntSwitch = withStyles((theme) => ({
   root: {
     width: 28,
@@ -79,12 +79,12 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-const Navbar = () => {
+const Navbar = (props) => {
   const classes = useStyle();
   const [checkedSexo, setChekedSexo] = useState(false);
   const handleSexo = (event, newValue) => {
-    mujer = newValue;
-    setChekedSexo(mujer);
+    props.handleSexo()
+    setChekedSexo(newValue);
   };
   return (
     <React.Fragment>
@@ -125,6 +125,10 @@ const App = () => {
   const [OutCorte, setOutCorte] = useState("");
   const [modal, setModal] = useState(false);
   const [tipoCabello, setTipoCabello] = useState(0);
+  const [sexo, setSexo] = useState("mujer");
+  const handleSexo = (value) => {
+    setSexo(sexo==='mujer'?'varon':'mujer');
+  };
   const abrirCerrar = () => {
     setModal(!modal);
   };
@@ -134,7 +138,7 @@ const App = () => {
         <h2> Resultado </h2>
       </div>
       <div align="center">
-        <img alt={OutCorte} src={OutCorte} width="450" height="550"></img>
+        <img alt={OutCorte} src={OutCorte} width="50%"></img>
       </div>
       <div align="right">
         <Button
@@ -188,25 +192,27 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Navbar />
-      {mujer.toString()}
-      <Modal open={modal} onClose={abrirCerrar}>
+      <Navbar handleSexo={handleSexo}/>
+      <Modal
+        open={modal}
+        onClose={abrirCerrar}
+        style={{ display: "flex", alignItems: "center", width: 80 + "%" }}
+      >
         {body}
       </Modal>
       <Wrapper
         style={{
           backgroundImage:
-            'url("https://previews.123rf.com/images/stepv/stepv1904/stepv190400006/122103258-womens-hair-salon-seamless-pattern-decorative-wallpaper-for-printing-design-background-vector-illust.jpg")',
+            'url("https://i.ibb.co/1rt1v7C/composicion-conjunto-iconos-peluqueria-1416-607a.jpg")',
         }}
       >
-        <Typography variant="h1">Ingrese sus datos personales</Typography>
+        <Typography variant="h3" style={{ backgroundColor: "#fff" }}>
+          Ingrese sus datos personales
+        </Typography>
         <Entrada>
-          <Typography variant="h4">
+          <Typography variant="h5">
             ¿Cuál es la opacidad de su cabello?
           </Typography>
-          <div style={{ background: OpacidadColores[OpacidadCabello] }}>
-            Muestra
-          </div>
 
           <Slider
             className={Estilos.SlideHair}
@@ -218,9 +224,7 @@ const App = () => {
           />
         </Entrada>
         <Entrada>
-          <Typography variant="h4">Elija su tono de piel</Typography>
-          <div style={{ background: ColorPiel[Piel] }}>Muestra</div>
-
+          <Typography variant="h5">Elija su tono de piel</Typography>
           <Slider
             className={Estilos.SlideSkin}
             onChange={ColorPielCambiada}
@@ -231,75 +235,64 @@ const App = () => {
           />
         </Entrada>
         <Entrada>
-          <Typography variant="h4">
-            Seleccione su tipo de rostro: {FormaCara}
-          </Typography>
-          <Grid container spacing={2} alignItems="center" justify="center">
-            <Grid
-              item
-              container
-              direction="row"
-              alignItems="center"
-              justify="center"
-            >
-              <Grid item>
-                <figure>
-                  <img
-                    onClick={HandleTipoRostro}
-                    alt="gOvalado"
-                    src="https://i.ibb.co/qrMzxHx/formas-rostro-ovalado-Xx-Xx80.jpg"
-                    style={{ width: 100 + "%" }}
-                  />
-                  <figcaption>Ovalado</figcaption>
-                </figure>
-              </Grid>
-              <Grid item>
-                <figure>
-                  <img
-                    onClick={HandleTipoRostro}
-                    alt="gCuadrado"
-                    src="https://i.ibb.co/txQVNbd/formas-rostro-cuadrado-Xx-Xx80.jpg"
-                    style={{ width: 100 + "%" }}
-                  />
-                  <figcaption>Cuadrado</figcaption>
-                </figure>
-              </Grid>
+          <Typography variant="h5">Seleccione su tipo de rostro:</Typography>
+          <Grid
+            container
+            alignItems="center"
+            justify="center"
+            spacing={0}
+            direction="row"
+          >
+            <Grid item container style={{ width: 50 + "%" }}>
+              <figure>
+                <img
+                  onClick={HandleTipoRostro}
+                  alt="gOvalado"
+                  src="https://i.ibb.co/qrMzxHx/formas-rostro-ovalado-Xx-Xx80.jpg"
+                  style={{ width: 100 + "%" }}
+                />
+                <figcaption>Ovalado</figcaption>
+              </figure>
             </Grid>
-            <Grid
-              item
-              container
-              direction="row"
-              alignItems="center"
-              justify="center"
-            >
-              <Grid item>
-                <figure>
-                  <img
-                    onClick={HandleTipoRostro}
-                    alt="gRedondo"
-                    src="https://i.ibb.co/8bjWjz9/formas-rostro-redondo-Xx-Xx80.jpg"
-                    style={{ width: 100 + "%" }}
-                  />
-                  <figcaption>Redondo</figcaption>
-                </figure>
-              </Grid>
-              <Grid item>
-                <figure>
-                  <img
-                    onClick={HandleTipoRostro}
-                    alt="gCorazon"
-                    src="https://i.ibb.co/JrrQWfq/formas-rostro-corazon-Xx-Xx80.jpg"
-                    style={{ width: 100 + "%" }}
-                  />
-                  <figcaption>Corazon</figcaption>
-                </figure>
-              </Grid>
+            <Grid item container style={{ width: 50 + "%" }}>
+              <figure>
+                <img
+                  onClick={HandleTipoRostro}
+                  alt="gCuadrado"
+                  src="https://i.ibb.co/txQVNbd/formas-rostro-cuadrado-Xx-Xx80.jpg"
+                  style={{ width: 100 + "%" }}
+                />
+                <figcaption>Cuadrado</figcaption>
+              </figure>
+            </Grid>
+
+            <Grid item container style={{ width: 50 + "%" }}>
+              <figure>
+                <img
+                  onClick={HandleTipoRostro}
+                  alt="gRedondo"
+                  src="https://i.ibb.co/8bjWjz9/formas-rostro-redondo-Xx-Xx80.jpg"
+                  style={{ width: 100 + "%" }}
+                />
+                <figcaption>Redondo</figcaption>
+              </figure>
+            </Grid>
+            <Grid item container style={{ width: 50 + "%" }}>
+              <figure>
+                <img
+                  onClick={HandleTipoRostro}
+                  alt="gCorazon"
+                  src="https://i.ibb.co/JrrQWfq/formas-rostro-corazon-Xx-Xx80.jpg"
+                  style={{ width: 100 + "%" }}
+                />
+                <figcaption>Corazon</figcaption>
+              </figure>
             </Grid>
           </Grid>
         </Entrada>
         <Entrada>
-          <Typography variant="h4">
-            Seleccione la moda que va con usted: {Moda}
+          <Typography variant="h5">
+            Seleccione la moda que va con usted:
           </Typography>
           <Grid
             container
@@ -308,18 +301,28 @@ const App = () => {
             spacing={0}
             direction="row"
           >
-            <Grid item>
+            <Grid
+              item
+              container
+              alignItems="center"
+              style={{ width: 50 + "%" }}
+            >
               <figure>
                 <img
                   onClick={HandleModa}
                   alt="gClasico"
-                  src={mujer?imgEstilosMujer[0]:imgEstilosMujer[1]}
+                  src={sexo==='mujer' ? imgEstilosMujer[0] : imgEstilosMujer[1]}
                   width="100%"
                 />
                 <figcaption>Clasico</figcaption>
               </figure>
             </Grid>
-            <Grid item style={{ alignItems: "center" }}>
+            <Grid
+              item
+              container
+              alignItems="center"
+              style={{ width: 50 + "%" }}
+            >
               <figure>
                 <img
                   onClick={HandleModa}
@@ -330,7 +333,12 @@ const App = () => {
                 <figcaption>Hipster</figcaption>
               </figure>
             </Grid>
-            <Grid item>
+            <Grid
+              item
+              container
+              alignItems="center"
+              style={{ width: 50 + "%" }}
+            >
               <figure>
                 <img
                   onClick={HandleModa}
@@ -344,9 +352,7 @@ const App = () => {
           </Grid>
         </Entrada>
         <Entrada>
-          <Typography variant="h4">
-            ¿Qué tan atrevido eres? {Personalidad}
-          </Typography>
+          <Typography variant="h5">¿Qué tan atrevido eres?</Typography>
           <Grid
             container
             alignItems="center"
@@ -354,25 +360,25 @@ const App = () => {
             spacing={0}
             direction="row"
           >
-            <Grid item>
+            <Grid item container style={{ width: 50 + "%" }}>
               <figure>
                 <img
                   alt="Introvertida"
                   align="center"
                   src="https://i.ibb.co/DVfSwT7/shutterstock-1682028859-ai1.jpg"
-                  width="80%"
+                  width="100%"
                 />
-                <figcaption>Introvertida</figcaption>
+                <figcaption>Reservad@</figcaption>
               </figure>
             </Grid>
-            <Grid item>
+            <Grid item container style={{ width: 50 + "%" }}>
               <figure>
                 <img
                   alt="Extrovertida"
                   src="https://i.ibb.co/hR1dzLP/extrovertido-concepto-extraversion-e-introversion-joven-mujer-feliz-centro-atencion-hablando-100478.jpg"
-                  width="80%"
+                  width="100%"
                 />
-                <figcaption>Extrovertida</figcaption>
+                <figcaption>Alocad@</figcaption>
               </figure>
             </Grid>
           </Grid>
@@ -385,9 +391,7 @@ const App = () => {
           />
         </Entrada>
         <Entrada>
-          <Typography variant="h4">
-            ¿Qué tan ocupad@ estás?: {NivelOcupacion}
-          </Typography>
+          <Typography variant="h5">¿Qué tan ocupad@ estás?:</Typography>
           <Grid
             container
             alignItems="center"
@@ -395,18 +399,13 @@ const App = () => {
             spacing={0}
             direction="row"
           >
-            <Grid item>
+            <Grid item container style={{ width: 50 + "%" }}>
               <figure>
-                <img
-                  alt="Libre"
-                  align="center"
-                  src={imgOcupacionMujer[1]}
-                  width="100%"
-                />
+                <img alt="Libre" src={imgOcupacionMujer[1]} width="100%" />
                 <figcaption>Libre</figcaption>
               </figure>
             </Grid>
-            <Grid item>
+            <Grid item container style={{ width: 50 + "%" }}>
               <figure>
                 <img alt="Ocupada" src={imgOcupacionMujer[0]} width="100%" />
                 <figcaption>Ocupada</figcaption>
@@ -424,17 +423,16 @@ const App = () => {
 
         <Entrada>
           <Typography variant="h4">¿Qué tan ondulado es su cabello?</Typography>
-          {tipoCabello}
           <img
             alt="TipoCabelo"
-            src="https://i.ibb.co/NCKBvDg/tipo-Cabello.jpg"
-            width="100%"
+            src="https://i.ibb.co/KVXw6FH/tipo-Cab-1.jpg"
+            width="70%"
           />
           <Slider
             onChange={HandleTipoCabello}
             defaultValue={0}
             min={0}
-            max={9}
+            max={4}
             marks={TiposCabello}
           />
         </Entrada>

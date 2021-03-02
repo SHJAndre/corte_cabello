@@ -65,16 +65,7 @@ export const TiposCabello = [
   { value: 1, label: "2a" },
   { value: 2, label: "2b" },
   { value: 3, label: "2c" },
-  { value: 4, label: "3a" },
-  { value: 5, label: "3b" },
-  { value: 6, label: "3c" },
-  { value: 7, label: "4a" },
-  { value: 8, label: "4b" },
-
-  {
-    value: 9,
-    label: "Crespo",
-  },
+  { value: 4, label: "Crespo" },
 ];
 export const LengthCabello = [
   {

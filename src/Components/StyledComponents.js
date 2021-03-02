@@ -37,7 +37,7 @@ export const Entrada = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 20px 50px 20px 50px;
-  background-color: #eddeff;
+  background-color: #e0e0eb;
   border-radius: 10px;
   margin: 30px 30px 30px 30px;
   width: 80%;

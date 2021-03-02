@@ -19,12 +19,9 @@ export const EstilosComponentes = makeStyles((theme) => ({
       top: "50%",
       left: "50%",
       transform: "translate(-50%,-50%)",
-      minWidth: 500,
-      maxWidth: 500,
+      width: "100%",
       backgroundColor: "white",
       borderRadius: 20,
-      minHeight: 680,
-      maxHeight: 680,
       //borderStyle: "2px solid #F39C12"
     },
     DeslizadorEdad: {
