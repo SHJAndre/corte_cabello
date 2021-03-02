@@ -5,16 +5,16 @@ const _ = require('lodash');
 
 function Busqueda(genero,pcolorCabello,pcolorPiel,pformaRostro,pestilo,patrevimiento,ptipoCabello,pocupamiento)
 {
-  var PersonaEncontrada;
   var Link;
-  if(genero="mujer")
+  var PersonaEncontrada;
+  if(genero === "mujer")
   {
     PersonaEncontrada=_.find(Mujer,function(persona){
       return ((persona.colorCabello==pcolorCabello)&&(persona.colorPiel==pcolorPiel)&& (persona.formaRostro==pformaRostro)&&(persona.estilo==pestilo)&&(persona.atrevimiento==patrevimiento)&&(persona.tipoCabello==ptipoCabello)&&(persona.ocupamiento==pocupamiento));
       });
     Link=PersonaEncontrada.urlCorte;
   }
-  else if (genero = "varon")
+  else
   {
     PersonaEncontrada=_.find(Varon,function(persona){
       return ((persona.colorCabello==pcolorCabello)&&(persona.colorPiel==pcolorPiel)&& (persona.formaRostro==pformaRostro)&&(persona.estilo==pestilo)&&(persona.atrevimiento==patrevimiento)&&(persona.tipoCabello==ptipoCabello)&&(persona.ocupamiento==pocupamiento));
@@ -23,6 +23,7 @@ function Busqueda(genero,pcolorCabello,pcolorPiel,pformaRostro,pestilo,patrevimi
   }
   return Link;
 }
+
 function triangular(x,param)
 {
   var a=parseFloat(param[0]);
@@ -366,7 +367,7 @@ function Ocupacion(Escala)
     }
 }
 
-export default function CorteRecomendado(Opacidad,TonoPiel,FormaCara,Estilo,TipoPersonalidad,TipoCabello,NivelOcup)
+export default function CorteRecomendado(Genero,Opacidad,TonoPiel,FormaCara,Estilo,TipoPersonalidad,TipoCabello,NivelOcup)
 {
     // Pertenencia
     var ColorCab = ColorCabello(Opacidad);
@@ -375,6 +376,6 @@ export default function CorteRecomendado(Opacidad,TonoPiel,FormaCara,Estilo,Tipo
     var TipoCab = TipoCabe(TipoCabello);
     var NivelOcup = Ocupacion(NivelOcup);
     //-------------------------------------------
-    var Resultado = Busqueda(ColorCab,ColorP,FormaCara,Estilo,Person,TipoCab,NivelOcup)
+    var Resultado = Busqueda(Genero,ColorCab,ColorP,FormaCara,Estilo,Person,TipoCab,NivelOcup)
     return Resultado;
 }

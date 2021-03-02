@@ -139,7 +139,7 @@ const App = () => {
         <h2> Tu corte recomendado es: </h2>
       </div>
       <div align="center">
-        <img alt={OutCorte} src={OutCorte} width="100%"></img>
+        <img alt={OutCorte} src={OutCorte} height="50%"></img>
       </div>
       <div align="right">
         <Button
