@@ -210,8 +210,8 @@ function ColorCabello(Escala)
     var uOpacidad = linspace(0,10, 100);
     //-------------------------------------------------------------------------------
     //Parametros de conjuntos difusos: var Color de cabello
-    var cClaro = [0,0,7];
-    var cOscuro = [2,10,10];          
+    var cClaro = [-1,0,7];
+    var cOscuro = [2,10,11];          
     //-------------------------------------------------------------------------------
     //Grado de membresía para universo de Color de cabello
     var gClaro  = triangular(uOpacidad, cClaro);
@@ -239,8 +239,8 @@ function ColorPiel(Escala)
     var uTonoPiel = linspace(0,10, 100);
     //-------------------------------------------------------------------------------
     //Parametros de conjuntos difusos: var Tono de Piel
-    var cClaroP = [0,0,7];
-    var cOscuroP = [2,10,10];          
+    var cClaroP = [-1,0,7];
+    var cOscuroP = [2,10,11];          
     //-------------------------------------------------------------------------------
     //Grado de membresía para universo de tono de piel
     var gClaroPiel  = triangular(uTonoPiel, cClaroP);
@@ -268,8 +268,8 @@ function Personalidad(Escala)
     var uPersonalidad = linspace(0,3,100)
     //-------------------------------------------------------------------------------
     //Parametros de conjuntos difusos: var Personalidad
-    var cReservado = [0,0,2]     
-    var cAlocado = [1,3,3]        
+    var cReservado = [-1,0,2]     
+    var cAlocado = [1,3,4]        
     //-------------------------------------------------------------------------------
     //Grado de membresía para universo Personalidad
     var gReservado  = triangular(uPersonalidad, cReservado)
