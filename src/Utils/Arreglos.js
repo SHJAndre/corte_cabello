@@ -116,3 +116,15 @@ export const imgEstilosVaron=[
   //urbano
   'https://i.ibb.co/9qLmxfy/21f3fed206880337017af54dd4f0da36.jpg'
 ]
+export const imgAtrevidoVaron = [
+  //reservado
+  'https://i.ibb.co/nD6bg8h/que-es-introvertido.jpg',
+  //alocado
+  'https://i.ibb.co/K7N5wKH/extrovertido-e1600112558628.jpg',
+]
+export const imgAtrevidoMujer =[
+  //reservado
+  'https://i.ibb.co/DVfSwT7/shutterstock-1682028859-ai1.jpg',
+  //alocado
+  'https://i.ibb.co/hR1dzLP/extrovertido-concepto-extraversion-e-introversion-joven-mujer-feliz-centro-atencion-hablando-100478.jpg'
+]

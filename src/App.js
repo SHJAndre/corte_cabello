@@ -19,8 +19,8 @@ import {
   Toolbar,
 } from "@material-ui/core";
 import {
-  OpacidadColores,
-  ColorPiel,
+  imgAtrevidoVaron,
+  imgAtrevidoMujer,
   OpacidadRango,
   imgOcupacionMujer,
   imgOcupacionVaron,
@@ -138,9 +138,16 @@ const App = () => {
       <div align="center">
         <h2> Tu corte recomendado es: </h2>
       </div>
-      <div align="center" width="90%">
-        <img alt={OutCorte} src={OutCorte} width="100%" height="100%"></img>
-      </div>
+      <img
+        alt={OutCorte}
+        src={OutCorte}
+        style={{
+          maxWidth: "80%",
+          maxHeight: "90%",
+          minWidth: "70%",
+          minHeight: "70%",
+        }}
+      ></img>
       <div align="right">
         <Button
           color="secondary"
@@ -204,7 +211,7 @@ const App = () => {
       </Modal>
       <Wrapper
         style={{
-          backgroundImage:
+          backgroundImage: sexo==='mujer'?'url("https://i.ibb.co/dbGpzy2/vector-pattern-hairdresser-elements-white-background-vector-pattern-hairdresser-elements-white-backg.jpg")':
             'url("https://i.ibb.co/1rt1v7C/composicion-conjunto-iconos-peluqueria-1416-607a.jpg")',
         }}
       >
@@ -382,7 +389,7 @@ const App = () => {
                 <img
                   alt="Introvertida"
                   align="center"
-                  src="https://i.ibb.co/DVfSwT7/shutterstock-1682028859-ai1.jpg"
+                  src={sexo==='mujer'?imgAtrevidoMujer[0]:imgAtrevidoVaron[0]}
                   width="100%"
                 />
                 <figcaption>Reservad@</figcaption>
@@ -392,7 +399,7 @@ const App = () => {
               <figure>
                 <img
                   alt="Extrovertida"
-                  src="https://i.ibb.co/hR1dzLP/extrovertido-concepto-extraversion-e-introversion-joven-mujer-feliz-centro-atencion-hablando-100478.jpg"
+                  src={sexo==='mujer'?imgAtrevidoMujer[1]:imgAtrevidoVaron[1]}
                   width="100%"
                 />
                 <figcaption>Alocad@</figcaption>
@@ -477,7 +484,7 @@ const App = () => {
         <Button
           onClick={HandleCorte}
           style={{ maxHeight: "70px", minHeight: "70px" }}
-          color="secondary"
+          color={sexo==='mujer'?'secondary':'primary'}
           variant="contained"
           fullWidth
         >
