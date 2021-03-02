@@ -265,11 +265,11 @@ function Personalidad(Escala)
 {
     //-------------------------------------------------------------------------------
     //Universo para variable Personalidad (1-10)
-    var uPersonalidad = linspace(0,10,100)
+    var uPersonalidad = linspace(0,5,50)
     //-------------------------------------------------------------------------------
     //Parametros de conjuntos difusos: var Personalidad
-    var cReservado = [2,3,7]     
-    var cAlocado = [4,8,9]        
+    var cReservado = [1,2,4]     
+    var cAlocado = [3,4,5]        
     //-------------------------------------------------------------------------------
     //Grado de membresía para universo Personalidad
     var gReservado  = triangular(uPersonalidad, cReservado)
@@ -326,12 +326,12 @@ function Ocupacion(Escala)
 {
     //-------------------------------------------------------------------------------
     //Universo para variable Nivel de Ocupacion
-    var uNivelOcupacion = linspace(0,10, 100)
+    var uNivelOcupacion = linspace(0,5,50)
 
     //-------------------------------------------------------------------------------
     //Parametros de conjuntos difusos: var Nivel de Ocupacion
-    var cLibre = [0,3,6.5]     
-    var cMucho = [2,7,10]          
+    var cLibre = [0,1,4]     
+    var cMucho = [1,3,5]          
     //-------------------------------------------------------------------------------
     //Grado de membresía para universo de Nivel de Ocupacion
     var gLibre  = triangular(uNivelOcupacion, cLibre)
