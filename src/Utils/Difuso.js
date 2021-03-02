@@ -210,8 +210,8 @@ function ColorCabello(Escala)
     var uOpacidad = linspace(0,10, 100);
     //-------------------------------------------------------------------------------
     //Parametros de conjuntos difusos: var Color de cabello
-    var cClaro = [0,3,7];
-    var cOscuro = [2,7,10];          
+    var cClaro = [0,0,7];
+    var cOscuro = [2,10,10];          
     //-------------------------------------------------------------------------------
     //Grado de membresía para universo de Color de cabello
     var gClaro  = triangular(uOpacidad, cClaro);
@@ -239,8 +239,8 @@ function ColorPiel(Escala)
     var uTonoPiel = linspace(0,10, 100);
     //-------------------------------------------------------------------------------
     //Parametros de conjuntos difusos: var Tono de Piel
-    var cClaroP = [0,3,7];
-    var cOscuroP = [2,7,10];          
+    var cClaroP = [0,0,7];
+    var cOscuroP = [2,10,10];          
     //-------------------------------------------------------------------------------
     //Grado de membresía para universo de tono de piel
     var gClaroPiel  = triangular(uTonoPiel, cClaroP);
@@ -268,8 +268,8 @@ function Personalidad(Escala)
     var uPersonalidad = linspace(0,3,100)
     //-------------------------------------------------------------------------------
     //Parametros de conjuntos difusos: var Personalidad
-    var cReservado = [0,1,2]     
-    var cAlocado = [1,2,3]        
+    var cReservado = [0,0,2]     
+    var cAlocado = [1,3,3]        
     //-------------------------------------------------------------------------------
     //Grado de membresía para universo Personalidad
     var gReservado  = triangular(uPersonalidad, cReservado)
@@ -298,8 +298,8 @@ function TipoCabe(Escala)
 
     //-------------------------------------------------------------------------------
     //Parametros de conjuntos difusos: var Tipo de Cabello
-    var cLacio = [0,4,7.5]     
-    var cCrespo = [3,7,10]          
+    var cLacio = [0,0,3]     
+    var cCrespo = [1.5,4,4]            
     //-------------------------------------------------------------------------------
     //Grado de membresía para universo de Tipo de Cabello
     var gLacio  = triangular(uTipoCabello, cLacio)
@@ -330,8 +330,8 @@ function Ocupacion(Escala)
 
     //-------------------------------------------------------------------------------
     //Parametros de conjuntos difusos: var Nivel de Ocupacion
-    var cLibre = [0,1,4]     
-    var cMucho = [1,3,5]          
+    var cLibre = [0,0,4]    
+    var cMucho = [1,5,5]          
     //-------------------------------------------------------------------------------
     //Grado de membresía para universo de Nivel de Ocupacion
     var gLibre  = triangular(uNivelOcupacion, cLibre)
