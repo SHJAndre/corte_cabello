@@ -17,7 +17,7 @@ function Busqueda(genero,pcolorCabello,pcolorPiel,pformaRostro,pestilo,patrevimi
   else
   {
     PersonaEncontrada=_.find(Varon,function(persona){
-      return ((persona.colorCabello==pcolorCabello)&&(persona.colorPiel==pcolorPiel)&& (persona.formaRostro==pformaRostro)&&(persona.estilo==pestilo)&&(persona.atrevimiento==patrevimiento)&&(persona.tipoCabello==ptipoCabello)&&(persona.ocupamiento==pocupamiento));
+      return ((persona.colorCabello=='gOscuro')&&(persona.colorPiel==pcolorPiel)&& (persona.formaRostro==pformaRostro)&&(persona.estilo==pestilo)&&(persona.atrevimiento==patrevimiento)&&(persona.tipoCabello==ptipoCabello)&&(persona.ocupamiento==pocupamiento));
       });
     Link=PersonaEncontrada.urlCorte;
   }
