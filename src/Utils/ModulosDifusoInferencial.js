@@ -2,6 +2,7 @@
 // Logica difusa 
 //------------------------------------
 // Funciones para fuzzificación
+// Función de pertenencia triangular
 function triangular(x,param)
 {
   var a=parseFloat(param[0]);
@@ -65,6 +66,7 @@ function triangular(x,param)
     }
 }
 //------------------------------------
+// Función de pertenencia trapezoidal
 function trapezoidal(x,param)
 {
   var a=parseFloat(param[0]);
@@ -135,6 +137,7 @@ function trapezoidal(x,param)
     }
 }
 //------------------------------------
+// Función para cortar funciones
 function cortar(value,mf)
 {
   value=parseFloat(value);
@@ -175,6 +178,7 @@ function union(data)
     
 }
 //------------------------------------
+// Función para defuzzificar valores
 function defuzzificacion(y,mf)
 {
   var num=0;
@@ -189,6 +193,7 @@ function defuzzificacion(y,mf)
   return y0;
 }
 //------------------------------------
+// Función para crear universo
 function linspace(a,b,n) {
   if(typeof n === "undefined") n = Math.max(Math.round(b-a)+1,1);
   if(n<2) { return n===1?[a]:[]; }
@@ -200,6 +205,9 @@ function linspace(a,b,n) {
 //------------------------------------
 // Modulos para fuzzificación de variables de entrada
 // Variable Color Cabello
+// En el presente modulo se ingresa un valor númerico 
+// que permite definir el color del cabello en una 
+// escala de claro a oscuro, fuzzificandose de esa manera.
 //------------------------------------
 function ColorCabello(Escala)
 {
@@ -232,6 +240,9 @@ function ColorCabello(Escala)
 
 //------------------------------------
 // Variable Color Piel
+// En el presente modulo se ingresa un valor númerico 
+// que permite definir el color del piel en una 
+// escala de claro a oscuro, fuzzificandose de esa manera.
 //------------------------------------
 function ColorPiel(Escala)
 {
@@ -264,6 +275,10 @@ function ColorPiel(Escala)
 
 //------------------------------------
 // Variable Personalidad
+// En el presente modulo se ingresa un valor númerico 
+// que permite definir la personalidad o grado de atrevimiento
+// de una persona en una escala de reservado a atrevido
+// fuzzificandose de esa manera.
 //------------------------------------
 function Personalidad(Escala)
 {
@@ -296,6 +311,10 @@ function Personalidad(Escala)
 
 //------------------------------------
 // Variable Tipo de cabello
+// En el presente modulo se ingresa un valor númerico 
+// que permite definir el tipo de cabello de acuerdo a 
+// la escala de lacio o crespo que tenga,
+// fuzzificandose de esa manera.
 //------------------------------------
 function TipoCabe(Escala)
 {
@@ -331,6 +350,10 @@ function TipoCabe(Escala)
 
 //------------------------------------
 // Variable Ocupacion
+// En el presente modulo se ingresa un valor númerico 
+// que permite definir el grado de ocupación de una persona
+// de acuerdo a la escala de libre o muy ocupado que tenga,
+// fuzzificandose de esa manera.
 //------------------------------------
 function Ocupacion(Escala)
 {
@@ -363,12 +386,14 @@ function Ocupacion(Escala)
         return "gMucho";
     }
 }
+
 //--------------------------------------
 // Logica Inferencial
 //------------------------------------
 // Carga de datos de base de conocimiento (.json)
 const Varon = require('./Varon.json');
 const Mujer = require('./Mujer.json');
+// Llamamos a la libreria
 const _ = require('lodash');
 
 // Busqueda inferencial en base de conocimiento
@@ -376,19 +401,26 @@ function Busqueda(genero,pcolorCabello,pcolorPiel,pformaRostro,pestilo,patrevimi
 {
   var Link;
   var PersonaEncontrada;
+  // Definimos y devolvemos valores de acuerdo al genero
   if(genero === "mujer")
   {
-    PersonaEncontrada=_.find(Mujer,function(persona){
+      // Modulo que encuentra a una mujer segun sus caracteristicas
+      PersonaEncontrada=_.find(Mujer,function(persona){
+      // le pasamos las caracteristicas de la mujer, y devolvemos a la persona en sí.
       return ((persona.colorCabello==pcolorCabello)&&(persona.colorPiel==pcolorPiel)&& (persona.formaRostro==pformaRostro)&&(persona.estilo==pestilo)&&(persona.atrevimiento==patrevimiento)&&(persona.tipoCabello==ptipoCabello)&&(persona.ocupamiento==pocupamiento));
       });
-    Link=PersonaEncontrada.urlCorte;
+      // Recuperamos su recomendacion
+     Link=PersonaEncontrada.urlCorte;
   }
   else
   {
-    PersonaEncontrada=_.find(Varon,function(persona){
+      // Modulo que encuentra a un varon segun sus caracteristicas
+      PersonaEncontrada=_.find(Varon,function(persona){
+      // le pasamos las caracteristicas del varón, y devolvemos a la persona en sí.
       return ((persona.colorCabello=='gOscuro')&&(persona.colorPiel==pcolorPiel)&& (persona.formaRostro==pformaRostro)&&(persona.estilo==pestilo)&&(persona.atrevimiento==patrevimiento)&&(persona.tipoCabello==ptipoCabello)&&(persona.ocupamiento==pocupamiento));
       });
-    Link=PersonaEncontrada.urlCorte;
+      // Recuperamos su recomendacion
+      Link=PersonaEncontrada.urlCorte;
   }
   return Link;
 }
@@ -396,13 +428,15 @@ function Busqueda(genero,pcolorCabello,pcolorPiel,pformaRostro,pestilo,patrevimi
 // Devuelve el corte recomendado como url
 export default function CorteRecomendado(Genero,Opacidad,TonoPiel,FormaCara,Estilo,TipoPersonalidad,TipoCabello,NivelOcup)
 {
-    // Pertenencia
+    // Procesamos las variables de entrada difusas
+    // segun su grado de pertenencia
     var ColorCab = ColorCabello(Opacidad);
     var ColorP = ColorPiel(TonoPiel); 
     var Person = Personalidad(TipoPersonalidad);
     var TipoCab = TipoCabe(TipoCabello);
     var NivelOcup = Ocupacion(NivelOcup);
     //-------------------------------------------
+    // Buscamos en nuestra base de conocimiento, y devolvemos su recomendación 
     var Resultado = Busqueda(Genero,ColorCab,ColorP,FormaCara,Estilo,Person,TipoCab,NivelOcup)
     return Resultado;
 }
