@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import NumberFormat from "react-number-format";
 import { EstilosComponentes } from "./Utils/EstilosMaterialUI";
 import "./App.css";
-import CorteRecomendado from "./Utils/Difuso";
+import CorteRecomendado from "./Utils/ModulosDifusoInferencial";
 import {
   Modal,
   Slider,

@@ -1,29 +1,7 @@
-//import Busqueda from "./InferenciaCorte"
-const Varon = require('./Varon.json');
-const Mujer = require('./Mujer.json');
-const _ = require('lodash');
-
-function Busqueda(genero,pcolorCabello,pcolorPiel,pformaRostro,pestilo,patrevimiento,ptipoCabello,pocupamiento)
-{
-  var Link;
-  var PersonaEncontrada;
-  if(genero === "mujer")
-  {
-    PersonaEncontrada=_.find(Mujer,function(persona){
-      return ((persona.colorCabello==pcolorCabello)&&(persona.colorPiel==pcolorPiel)&& (persona.formaRostro==pformaRostro)&&(persona.estilo==pestilo)&&(persona.atrevimiento==patrevimiento)&&(persona.tipoCabello==ptipoCabello)&&(persona.ocupamiento==pocupamiento));
-      });
-    Link=PersonaEncontrada.urlCorte;
-  }
-  else
-  {
-    PersonaEncontrada=_.find(Varon,function(persona){
-      return ((persona.colorCabello=='gOscuro')&&(persona.colorPiel==pcolorPiel)&& (persona.formaRostro==pformaRostro)&&(persona.estilo==pestilo)&&(persona.atrevimiento==patrevimiento)&&(persona.tipoCabello==ptipoCabello)&&(persona.ocupamiento==pocupamiento));
-      });
-    Link=PersonaEncontrada.urlCorte;
-  }
-  return Link;
-}
-
+//------------------------------------
+// Logica difusa 
+//------------------------------------
+// Funciones para fuzzificación
 function triangular(x,param)
 {
   var a=parseFloat(param[0]);
@@ -86,6 +64,7 @@ function triangular(x,param)
       return -1;      
     }
 }
+//------------------------------------
 function trapezoidal(x,param)
 {
   var a=parseFloat(param[0]);
@@ -155,6 +134,7 @@ function trapezoidal(x,param)
       return -1;      
     }
 }
+//------------------------------------
 function cortar(value,mf)
 {
   value=parseFloat(value);
@@ -176,6 +156,7 @@ function cortar(value,mf)
       return -1;
     }
 }
+//------------------------------------
 function union(data)
 {
   var aux=[];
@@ -193,6 +174,7 @@ function union(data)
   return aux;
     
 }
+//------------------------------------
 function defuzzificacion(y,mf)
 {
   var num=0;
@@ -206,7 +188,7 @@ function defuzzificacion(y,mf)
   y0=num/den;
   return y0;
 }
-
+//------------------------------------
 function linspace(a,b,n) {
   if(typeof n === "undefined") n = Math.max(Math.round(b-a)+1,1);
   if(n<2) { return n===1?[a]:[]; }
@@ -215,7 +197,10 @@ function linspace(a,b,n) {
   for(i=n;i>=0;i--) { ret[i] = (i*b+(n-i)*a)/n; }
   return ret;
 }
-
+//------------------------------------
+// Modulos para fuzzificación de variables de entrada
+// Variable Color Cabello
+//------------------------------------
 function ColorCabello(Escala)
 {
     //-------------------------------------------------------------------------------
@@ -245,6 +230,9 @@ function ColorCabello(Escala)
     }
 }
 
+//------------------------------------
+// Variable Color Piel
+//------------------------------------
 function ColorPiel(Escala)
 {
     //-------------------------------------------------------------------------------
@@ -274,6 +262,9 @@ function ColorPiel(Escala)
     }
 }
 
+//------------------------------------
+// Variable Personalidad
+//------------------------------------
 function Personalidad(Escala)
 {
     //-------------------------------------------------------------------------------
@@ -303,6 +294,9 @@ function Personalidad(Escala)
     }
 }
 
+//------------------------------------
+// Variable Tipo de cabello
+//------------------------------------
 function TipoCabe(Escala)
 {
     //-------------------------------------------------------------------------------
@@ -335,6 +329,9 @@ function TipoCabe(Escala)
     }
 }
 
+//------------------------------------
+// Variable Ocupacion
+//------------------------------------
 function Ocupacion(Escala)
 {
     //-------------------------------------------------------------------------------
@@ -366,7 +363,37 @@ function Ocupacion(Escala)
         return "gMucho";
     }
 }
+//--------------------------------------
+// Logica Inferencial
+//------------------------------------
+// Carga de datos de base de conocimiento (.json)
+const Varon = require('./Varon.json');
+const Mujer = require('./Mujer.json');
+const _ = require('lodash');
 
+// Busqueda inferencial en base de conocimiento
+function Busqueda(genero,pcolorCabello,pcolorPiel,pformaRostro,pestilo,patrevimiento,ptipoCabello,pocupamiento)
+{
+  var Link;
+  var PersonaEncontrada;
+  if(genero === "mujer")
+  {
+    PersonaEncontrada=_.find(Mujer,function(persona){
+      return ((persona.colorCabello==pcolorCabello)&&(persona.colorPiel==pcolorPiel)&& (persona.formaRostro==pformaRostro)&&(persona.estilo==pestilo)&&(persona.atrevimiento==patrevimiento)&&(persona.tipoCabello==ptipoCabello)&&(persona.ocupamiento==pocupamiento));
+      });
+    Link=PersonaEncontrada.urlCorte;
+  }
+  else
+  {
+    PersonaEncontrada=_.find(Varon,function(persona){
+      return ((persona.colorCabello=='gOscuro')&&(persona.colorPiel==pcolorPiel)&& (persona.formaRostro==pformaRostro)&&(persona.estilo==pestilo)&&(persona.atrevimiento==patrevimiento)&&(persona.tipoCabello==ptipoCabello)&&(persona.ocupamiento==pocupamiento));
+      });
+    Link=PersonaEncontrada.urlCorte;
+  }
+  return Link;
+}
+
+// Devuelve el corte recomendado como url
 export default function CorteRecomendado(Genero,Opacidad,TonoPiel,FormaCara,Estilo,TipoPersonalidad,TipoCabello,NivelOcup)
 {
     // Pertenencia
